@@ -226,49 +226,49 @@ void modulaSeq(std::vector<std::vector<std::vector<double>>>seq, double factorDe
 		pregraph.resize(factorDepth * (depth+1));
 		for (int it = 0; it < factorDepth; it++) {
 			for (int i = 0; i < graph.size(); i++) {
-				pregraph[i] += cos((M_PI * i *2.0 * it / (factorDepth)));
+				pregraph[i] += cos((M_PI * i  * it / (factorDepth)));
 			}
 			if (checkCloser(graph, pregraph, sequence, factorDepth)) {
 				for (int i = 0; i < graph.size(); i++) {
-					graph[i] += cos((M_PI * i * 2.0 * it / (factorDepth)));
+					graph[i] += cos((M_PI * i  * it / (factorDepth)));
 				}
-				frequencies[ik].push_back(it);
+				frequencies[ik].push_back(it / (factorDepth));
 			}
 			if (!checkCloser(graph, pregraph, sequence, factorDepth)) {
 				for (int i = 0; i < graph.size(); i++) {
-					pregraph[i] -= cos((M_PI * i * 2.0 * it / (factorDepth)));
+					pregraph[i] -= cos((M_PI * i  * it / (factorDepth)));
 				}
 			}
 		}
 		for (int it = 0; it < factorDepth; it++) {
 			for (int i = 0; i < graph.size(); i++) {
-				pregraph[i] += cos((M_PI * i * 2.0 * it / (factorDepth)));
+				pregraph[i] += cos((M_PI * i * it / (factorDepth)));
 			}
 			if (checkCloser(graph, pregraph, sequence, factorDepth)) {
 				for (int i = 0; i < graph.size(); i++) {
-					graph[i] += cos((M_PI * i * 2.0 * it / (factorDepth)));
+					graph[i] += cos((M_PI * i * it / (factorDepth)));
 				}
-				frequencies[ik].push_back(it);
+				frequencies[ik].push_back(it / (factorDepth));
 			}
 			if (!checkCloser(graph, pregraph, sequence, factorDepth)) {
 				for (int i = 0; i < graph.size(); i++) {
-					pregraph[i] -= cos((M_PI * i * 2.0 * it / (factorDepth)));
+					pregraph[i] -= cos((M_PI * i * it / (factorDepth)));
 				}
 			}
 		}
 		for (int it = 0; it < factorDepth; it++) {
 			for (int i = 0; i < graph.size(); i++) {
-				pregraph[i] += cos((M_PI * i * 2.0 * it / (factorDepth)));
+				pregraph[i] += cos((M_PI * i  * it / (factorDepth)));
 			}
 			if (checkCloser(graph, pregraph, sequence, factorDepth)) {
 				for (int i = 0; i < graph.size(); i++) {
-					graph[i] += cos((M_PI * i * 2.0 * it / (factorDepth)));
+					graph[i] += cos((M_PI * i  * it / (factorDepth)));
 				}
-				frequencies[ik].push_back(it);
+				frequencies[ik].push_back(it / (factorDepth));
 			}
 			if (!checkCloser(graph, pregraph, sequence, factorDepth)) {
 				for (int i = 0; i < graph.size(); i++) {
-					pregraph[i] -= cos((M_PI * i * 2.0 * it / (factorDepth)));
+					pregraph[i] -= cos((M_PI * i * it / (factorDepth)));
 				}
 			}
 		}
@@ -306,7 +306,7 @@ void modulaSeq(std::vector<std::vector<std::vector<double>>>seq, double factorDe
 
 
 
-bool modcheckCloser(std::vector<double>graph, std::vector<double>pregraph, std::vector<double>sequence, double factorDepth) {
+bool powcheckCloser(std::vector<double>graph, std::vector<double>pregraph, std::vector<double>sequence, double factorDepth) {
 	std::vector<std::vector<bool>>nearingAnswerVector(2);
 	nearingAnswerVector.resize(0);
 	nearingAnswerVector.resize(2);
@@ -326,7 +326,7 @@ bool modcheckCloser(std::vector<double>graph, std::vector<double>pregraph, std::
 	}
 
 	for (int iz = 0; iz < (sequence.size()) * factorDepth; iz++) {
-		if (!(round(iz / factorDepth) > sequence.size())) {
+		if ((round(iz / factorDepth) < sequence.size())&& iz < graph.size()) {
 			if (abs(pregraph[iz] - sequence[round(iz / factorDepth)]) < abs(graph[iz] - sequence[round(iz / factorDepth)])) {
 				nearingAnswerVector[0].push_back(true);
 			}
@@ -385,13 +385,13 @@ void curveSeq(std::vector<std::vector<std::vector<double>>>seq, double factorDep
 			for (int i = 0; i < graph.size(); i++) {
 				pregraph[i] += pow(i / factorDepth, it / (factorDepth / 2.0));
 			}
-			if (modcheckCloser(graph, pregraph, sequence, factorDepth)) {
+			if (powcheckCloser(graph, pregraph, sequence, factorDepth)) {
 				for (int i = 0; i < graph.size(); i++) {
 					graph[i] += pow(i / factorDepth, it / (factorDepth / 2.0));
 				}
 				factors[ie].push_back(it / (factorDepth / 2.0));
 			}
-			if (!modcheckCloser(graph, pregraph, sequence, factorDepth)) {
+			if (!powcheckCloser(graph, pregraph, sequence, factorDepth)) {
 				for (int i = 0; i < graph.size(); i++) {
 					pregraph[i] -= pow(i / factorDepth, it / (factorDepth / 2.0));
 				}
@@ -401,13 +401,13 @@ void curveSeq(std::vector<std::vector<std::vector<double>>>seq, double factorDep
 			for (int i = 0; i < graph.size(); i++) {
 				pregraph[i] += pow(i / factorDepth, it / (factorDepth / 2.0));
 			}
-			if (modcheckCloser(graph, pregraph, sequence, factorDepth)) {
+			if (powcheckCloser(graph, pregraph, sequence, factorDepth)) {
 				for (int i = 0; i < graph.size(); i++) {
 					graph[i] += pow(i / factorDepth, it / (factorDepth / 2.0));
 				}
 				factors[ie].push_back(it / (factorDepth / 2.0));
 			}
-			if (!modcheckCloser(graph, pregraph, sequence, factorDepth)) {
+			if (!powcheckCloser(graph, pregraph, sequence, factorDepth)) {
 				for (int i = 0; i < graph.size(); i++) {
 					pregraph[i] -= pow(i / factorDepth, it / (factorDepth / 2.0));
 				}
@@ -417,13 +417,13 @@ void curveSeq(std::vector<std::vector<std::vector<double>>>seq, double factorDep
 			for (int i = 0; i < graph.size(); i++) {
 				pregraph[i] += pow(i / factorDepth, it / (factorDepth / 2.0));
 			}
-			if (modcheckCloser(graph, pregraph, sequence, factorDepth)) {
+			if (powcheckCloser(graph, pregraph, sequence, factorDepth)) {
 				for (int i = 0; i < graph.size(); i++) {
 					graph[i] += pow(i / factorDepth, it / (factorDepth / 2.0));
 				}
 				factors[ie].push_back(it / (factorDepth / 2.0));
 			}
-			if (!modcheckCloser(graph, pregraph, sequence, factorDepth)) {
+			if (!powcheckCloser(graph, pregraph, sequence, factorDepth)) {
 				for (int i = 0; i < graph.size(); i++) {
 					pregraph[i] -= pow(i / factorDepth, it / (factorDepth / 2.0));
 				}
@@ -476,14 +476,16 @@ int main()
 
 	while (!done) {
 
-		std::cout << "Welcome to UniqueSolution, a problem solver: \n" <<
-			"The Number of Unique Identities Created by the Six Major Operations on Any Two Integers 0-X \n" <<
-			"Enter Depth of the Six Functions sequences to be indexed: ";
+		std::cout << "     Welcome to UniqueSolution, a problem solver: \n" <<
+			" The Number of Unique Identities Created by the Six Major Operations on Any Two Integers 0-X \n" <<
+			" Enter Depth of the Six Functions sequences to be indexed: ";
 		std::cin >> depth;
 		std::cout << "\n Processing depth: " << depth << ".";
-		calcSeq(depth);
-		std::cout << "\n \n \n Factorization hunt depth (number of factors to consider before rerouting (suggest minimum "<<depth<<")) : ";
+		std::cout << "\n And, for after the sequences are loaded:"<<
+			"\n Factorization hunt depth (number of factors to consider before rerouting (suggest minimum " << depth << ")) : ";
 		std::cin >> factorizationDepth;
+		calcSeq(depth);
+		
 
 		std::cout << "\n \n OK......  Cosine Frequencies Solutions Solver run. \n";
 		modulaSeq(uniqueValues, factorizationDepth);

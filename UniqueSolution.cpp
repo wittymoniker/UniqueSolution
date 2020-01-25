@@ -239,19 +239,19 @@ void modulaSeq(std::vector<std::vector<std::vector<double>>>seq, double factorDe
 				pregrapha[i] += cos((M_PI *2* i  * it / (factorDepth)));
 				pregraphs[i] += cos((M_PI * 2 * i * it / (factorDepth)));
 			}
-			if (checkCloser(pregraphs, pregrapha, sequence, factorDepth)) {
+			if (checkCloser(pregraphs, pregrapha, sequence, factorDepth)==true) {
 				for (int i = 0; i < graph.size(); i++) {
 					pregraph[i] -= cos((M_PI * i * 2 * it / (factorDepth)));
 				}
 				frequencies[ik].push_back(-(it / (factorDepth)));
 			}
-			else {
+			if (checkCloser(pregrapha, pregraphs, sequence, factorDepth) == true) {
 				for (int i = 0; i < graph.size(); i++) {
 					pregraph[i] += cos((M_PI * i * 2 * it / (factorDepth)));
 				}
 				frequencies[ik].push_back((it / (factorDepth)));
 			}
-			if (checkCloser(graph, pregraph, sequence, factorDepth)) {
+			if (checkCloser(graph, pregraph, sequence, factorDepth) == true) {
 				for (int i = 0; i < graph.size(); i++) {
 					graph[i] = pregraph[i];
 				}
@@ -262,19 +262,19 @@ void modulaSeq(std::vector<std::vector<std::vector<double>>>seq, double factorDe
 				pregrapha[i] += cos((M_PI * 2 * i * it / (factorDepth)));
 				pregraphs[i] += cos((M_PI * 2 * i * it / (factorDepth)));
 			}
-			if (checkCloser(pregraphs, pregrapha, sequence, factorDepth)) {
+			if (checkCloser(pregraphs, pregrapha, sequence, factorDepth) == true) {
 				for (int i = 0; i < graph.size(); i++) {
 					pregraph[i] -= cos((M_PI * i * 2 * it / (factorDepth)));
 				}
 				frequencies[ik].push_back(-(it / (factorDepth)));
 			}
-			else {
+			if (checkCloser(pregrapha, pregraphs, sequence, factorDepth) == true) {
 				for (int i = 0; i < graph.size(); i++) {
 					pregraph[i] += cos((M_PI * i * 2 * it / (factorDepth)));
 				}
 				frequencies[ik].push_back((it / (factorDepth)));
 			}
-			if (checkCloser(graph, pregraph, sequence, factorDepth)) {
+			if (checkCloser(graph, pregraph, sequence, factorDepth) == true) {
 				for (int i = 0; i < graph.size(); i++) {
 					graph[i] = pregraph[i];
 				}
@@ -285,19 +285,19 @@ void modulaSeq(std::vector<std::vector<std::vector<double>>>seq, double factorDe
 				pregrapha[i] += cos((M_PI * 2 * i * it / (factorDepth)));
 				pregraphs[i] += cos((M_PI * 2 * i * it / (factorDepth)));
 			}
-			if (checkCloser(pregraphs, pregrapha, sequence, factorDepth)) {
+			if (checkCloser(pregraphs, pregrapha, sequence, factorDepth) == true) {
 				for (int i = 0; i < graph.size(); i++) {
 					pregraph[i] -= cos((M_PI * i * 2 * it / (factorDepth)));
 				}
 				frequencies[ik].push_back(-(it / (factorDepth)));
 			}
-			else {
+			if (checkCloser(pregrapha, pregraphs, sequence, factorDepth) == true) {
 				for (int i = 0; i < graph.size(); i++) {
 					pregraph[i] += cos((M_PI * i * 2 * it / (factorDepth)));
 				}
 				frequencies[ik].push_back((it / (factorDepth)));
 			}
-			if (checkCloser(graph, pregraph, sequence, factorDepth)) {
+			if (checkCloser(graph, pregraph, sequence, factorDepth) == true) {
 				for (int i = 0; i < graph.size(); i++) {
 					graph[i] = pregraph[i];
 				}
@@ -308,19 +308,19 @@ void modulaSeq(std::vector<std::vector<std::vector<double>>>seq, double factorDe
 				pregrapha[i] += cos((M_PI * 2 * i * it / (factorDepth)));
 				pregraphs[i] += cos((M_PI * 2 * i * it / (factorDepth)));
 			}
-			if (checkCloser(pregraphs, pregrapha, sequence, factorDepth)) {
+			if (checkCloser(pregraphs, pregrapha, sequence, factorDepth) == true) {
 				for (int i = 0; i < graph.size(); i++) {
 					pregraph[i] -= cos((M_PI * i * 2 * it / (factorDepth)));
 				}
 				frequencies[ik].push_back(-(it / (factorDepth)));
 			}
-			else {
+			if (checkCloser(pregrapha, pregraphs, sequence, factorDepth) == true) {
 				for (int i = 0; i < graph.size(); i++) {
 					pregraph[i] += cos((M_PI * i * 2 * it / (factorDepth)));
 				}
 				frequencies[ik].push_back((it / (factorDepth)));
 			}
-			if (checkCloser(graph, pregraph, sequence, factorDepth)) {
+			if (checkCloser(graph, pregraph, sequence, factorDepth) == true) {
 				for (int i = 0; i < graph.size(); i++) {
 					graph[i] = pregraph[i];
 				}
@@ -331,19 +331,19 @@ void modulaSeq(std::vector<std::vector<std::vector<double>>>seq, double factorDe
 				pregrapha[i] += cos((M_PI * 2 * i * it / (factorDepth)));
 				pregraphs[i] += cos((M_PI * 2 * i * it / (factorDepth)));
 			}
-			if (checkCloser(pregraphs, pregrapha, sequence, factorDepth)) {
+			if (checkCloser(pregraphs, pregrapha, sequence, factorDepth) == true) {
 				for (int i = 0; i < graph.size(); i++) {
 					pregraph[i] -= cos((M_PI * i * 2 * it / (factorDepth)));
 				}
 				frequencies[ik].push_back(-(it / (factorDepth)));
 			}
-			else {
+			if (checkCloser(pregrapha, pregraphs, sequence, factorDepth) == true) {
 				for (int i = 0; i < graph.size(); i++) {
 					pregraph[i] += cos((M_PI * i * 2 * it / (factorDepth)));
 				}
 				frequencies[ik].push_back((it / (factorDepth)));
 			}
-			if (checkCloser(graph, pregraph, sequence, factorDepth)) {
+			if (checkCloser(graph, pregraph, sequence, factorDepth) == true) {
 				for (int i = 0; i < graph.size(); i++) {
 					graph[i] = pregraph[i];
 				}
@@ -354,19 +354,19 @@ void modulaSeq(std::vector<std::vector<std::vector<double>>>seq, double factorDe
 				pregrapha[i] += cos((M_PI * 2 * i * it / (factorDepth)));
 				pregraphs[i] += cos((M_PI * 2 * i * it / (factorDepth)));
 			}
-			if (checkCloser(pregraphs, pregrapha, sequence, factorDepth)) {
+			if (checkCloser(pregraphs, pregrapha, sequence, factorDepth) == true) {
 				for (int i = 0; i < graph.size(); i++) {
 					pregraph[i] -= cos((M_PI * i * 2 * it / (factorDepth)));
 				}
 				frequencies[ik].push_back(-(it / (factorDepth)));
 			}
-			else {
+			if (checkCloser(pregrapha, pregraphs, sequence, factorDepth) == true) {
 				for (int i = 0; i < graph.size(); i++) {
 					pregraph[i] += cos((M_PI * i * 2 * it / (factorDepth)));
 				}
 				frequencies[ik].push_back((it / (factorDepth)));
 			}
-			if (checkCloser(graph, pregraph, sequence, factorDepth)) {
+			if (checkCloser(graph, pregraph, sequence, factorDepth) == true) {
 				for (int i = 0; i < graph.size(); i++) {
 					graph[i] = pregraph[i];
 				}
@@ -496,19 +496,19 @@ void curveSeq(std::vector<std::vector<std::vector<double>>>seq, double factorDep
 				pregrapha[i] += pow(i / factorDepth, it / (factorDepth / 2.0));
 				pregraphs[i] -= pow(i / factorDepth, it / (factorDepth / 2.0));
 			}
-			if (powcheckCloser(pregrapha, pregraphs, sequence, factorDepth)) {
+			if (powcheckCloser(pregrapha, pregraphs, sequence, factorDepth)==true) {
 				for (int i = 0; i < graph.size(); i++) {
 					pregraph[i] += pow(i / factorDepth, it / (factorDepth / 2.0));
 				}
 				factors[ie].push_back(it / (factorDepth / 2.0));
 			}
-			else {
+			if(powcheckCloser(pregraphs, pregrapha, sequence, factorDepth) == true) {
 				for (int i = 0; i < graph.size(); i++) {
 					pregraph[i] -= pow(i / factorDepth, it / (factorDepth / 2.0));
 				}
 				factors[ie].push_back(-(it / (factorDepth / 2.0)));
 			}
-			if (powcheckCloser(graph, pregraph, sequence, factorDepth)) {
+			if (powcheckCloser(graph, pregraph, sequence, factorDepth) == true) {
 				for (int i = 0; i < graph.size(); i++) {
 					graph[i] = pregraph[i];
 				}
@@ -519,19 +519,19 @@ void curveSeq(std::vector<std::vector<std::vector<double>>>seq, double factorDep
 				pregrapha[i] += pow(i / factorDepth, it / (factorDepth / 2.0));
 				pregraphs[i] -= pow(i / factorDepth, it / (factorDepth / 2.0));
 			}
-			if (powcheckCloser(pregrapha, pregraphs, sequence, factorDepth)) {
+			if (powcheckCloser(pregrapha, pregraphs, sequence, factorDepth) == true) {
 				for (int i = 0; i < graph.size(); i++) {
 					pregraph[i] += pow(i / factorDepth, it / (factorDepth / 2.0));
 				}
 				factors[ie].push_back(it / (factorDepth / 2.0));
 			}
-			else {
+			if (powcheckCloser(pregraphs, pregrapha, sequence, factorDepth) == true) {
 				for (int i = 0; i < graph.size(); i++) {
 					pregraph[i] -= pow(i / factorDepth, it / (factorDepth / 2.0));
 				}
 				factors[ie].push_back(-(it / (factorDepth / 2.0)));
 			}
-			if (!powcheckCloser(graph, pregraph, sequence, factorDepth)) {
+			if (powcheckCloser(graph, pregraph, sequence, factorDepth) == true) {
 				for (int i = 0; i < graph.size(); i++) {
 					graph[i] = pregraph[i];
 				}
@@ -542,19 +542,19 @@ void curveSeq(std::vector<std::vector<std::vector<double>>>seq, double factorDep
 				pregrapha[i] += pow(i / factorDepth, it / (factorDepth / 2.0));
 				pregraphs[i] -= pow(i / factorDepth, it / (factorDepth / 2.0));
 			}
-			if (powcheckCloser(pregrapha, pregraphs, sequence, factorDepth)) {
+			if (powcheckCloser(pregrapha, pregraphs, sequence, factorDepth) == true) {
 				for (int i = 0; i < graph.size(); i++) {
 					pregraph[i] += pow(i / factorDepth, it / (factorDepth / 2.0));
 				}
 				factors[ie].push_back(it / (factorDepth / 2.0));
 			}
-			else {
+			if (powcheckCloser(pregraphs, pregrapha, sequence, factorDepth) == true) {
 				for (int i = 0; i < graph.size(); i++) {
 					pregraph[i] -= pow(i / factorDepth, it / (factorDepth / 2.0));
 				}
 				factors[ie].push_back(-(it / (factorDepth / 2.0)));
 			}
-			if (!powcheckCloser(graph, pregraph, sequence, factorDepth)) {
+			if (powcheckCloser(graph, pregraph, sequence, factorDepth) == true) {
 				for (int i = 0; i < graph.size(); i++) {
 					graph[i] = pregraph[i];
 				}
@@ -565,19 +565,19 @@ void curveSeq(std::vector<std::vector<std::vector<double>>>seq, double factorDep
 				pregrapha[i] += pow(i / factorDepth, it / (factorDepth / 2.0));
 				pregraphs[i] -= pow(i / factorDepth, it / (factorDepth / 2.0));
 			}
-			if (powcheckCloser(pregrapha, pregraphs, sequence, factorDepth)) {
+			if (powcheckCloser(pregrapha, pregraphs, sequence, factorDepth) == true) {
 				for (int i = 0; i < graph.size(); i++) {
 					pregraph[i] += pow(i / factorDepth, it / (factorDepth / 2.0));
 				}
 				factors[ie].push_back(it / (factorDepth / 2.0));
 			}
-			else {
+			if (powcheckCloser(pregraphs, pregrapha, sequence, factorDepth) == true) {
 				for (int i = 0; i < graph.size(); i++) {
 					pregraph[i] -= pow(i / factorDepth, it / (factorDepth / 2.0));
 				}
 				factors[ie].push_back(-(it / (factorDepth / 2.0)));
 			}
-			if (!powcheckCloser(graph, pregraph, sequence, factorDepth)) {
+			if (powcheckCloser(graph, pregraph, sequence, factorDepth) == true) {
 				for (int i = 0; i < graph.size(); i++) {
 					graph[i] = pregraph[i];
 				}
@@ -588,19 +588,19 @@ void curveSeq(std::vector<std::vector<std::vector<double>>>seq, double factorDep
 				pregrapha[i] += pow(i / factorDepth, it / (factorDepth / 2.0));
 				pregraphs[i] -= pow(i / factorDepth, it / (factorDepth / 2.0));
 			}
-			if (powcheckCloser(pregrapha, pregraphs, sequence, factorDepth)) {
+			if (powcheckCloser(pregrapha, pregraphs, sequence, factorDepth) == true) {
 				for (int i = 0; i < graph.size(); i++) {
 					pregraph[i] += pow(i / factorDepth, it / (factorDepth / 2.0));
 				}
 				factors[ie].push_back(it / (factorDepth / 2.0));
 			}
-			else {
+			if (powcheckCloser(pregraphs, pregrapha, sequence, factorDepth) == true) {
 				for (int i = 0; i < graph.size(); i++) {
 					pregraph[i] -= pow(i / factorDepth, it / (factorDepth / 2.0));
 				}
 				factors[ie].push_back(-(it / (factorDepth / 2.0)));
 			}
-			if (!powcheckCloser(graph, pregraph, sequence, factorDepth)) {
+			if (powcheckCloser(graph, pregraph, sequence, factorDepth) == true) {
 				for (int i = 0; i < graph.size(); i++) {
 					graph[i] = pregraph[i];
 				}
@@ -611,19 +611,19 @@ void curveSeq(std::vector<std::vector<std::vector<double>>>seq, double factorDep
 				pregrapha[i] += pow(i / factorDepth, it / (factorDepth / 2.0));
 				pregraphs[i] -= pow(i / factorDepth, it / (factorDepth / 2.0));
 			}
-			if (powcheckCloser(pregrapha, pregraphs, sequence, factorDepth)) {
+			if (powcheckCloser(pregrapha, pregraphs, sequence, factorDepth) == true) {
 				for (int i = 0; i < graph.size(); i++) {
 					pregraph[i] += pow(i / factorDepth, it / (factorDepth / 2.0));
 				}
 				factors[ie].push_back(it / (factorDepth / 2.0));
 			}
-			else {
+			if (powcheckCloser(pregraphs, pregrapha, sequence, factorDepth) == true) {
 				for (int i = 0; i < graph.size(); i++) {
 					pregraph[i] -= pow(i / factorDepth, it / (factorDepth / 2.0));
 				}
 				factors[ie].push_back(-(it / (factorDepth / 2.0)));
 			}
-			if (!powcheckCloser(graph, pregraph, sequence, factorDepth)) {
+			if (powcheckCloser(graph, pregraph, sequence, factorDepth) == true) {
 				for (int i = 0; i < graph.size(); i++) {
 					graph[i] = pregraph[i];
 				}

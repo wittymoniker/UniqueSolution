@@ -198,6 +198,7 @@ bool checkCloser(std::vector<double>graph, std::vector<double>pregraph, std::vec
 }
 
 
+
 void modulaSeq(std::vector<std::vector<double>>seq, double depth, double factorDepth) {
 
 	std::vector<double>sequence;
@@ -223,49 +224,49 @@ void modulaSeq(std::vector<std::vector<double>>seq, double depth, double factorD
 		pregraph.resize(factorDepth * depth + 1);
 		for (int it = 0; it < factorDepth; it++) {
 			for (int i = 0; i < graph.size(); i++) {
-				pregraph[i] += cos((M_PI * i * it / (factorDepth)) / sequence[sequence.size() - 1.0]);
+				pregraph[i] += cos((M_PI * i *2.0 * it / (factorDepth)));
 			}
 			if (checkCloser(graph, pregraph, sequence, factorDepth)) {
 				for (int i = 0; i < graph.size(); i++) {
-					graph[i] += cos((M_PI * i * it / (factorDepth)) / sequence[sequence.size() - 1.0]);
+					graph[i] += cos((M_PI * i * 2.0 * it / (factorDepth)));
 				}
 				frequencies[ik].push_back(it);
 			}
 			if (!checkCloser(graph, pregraph, sequence, factorDepth)) {
 				for (int i = 0; i < graph.size(); i++) {
-					pregraph[i] -= cos((M_PI * i * it / (factorDepth)) / sequence[sequence.size() - 1.0]);
+					pregraph[i] -= cos((M_PI * i * 2.0 * it / (factorDepth)));
 				}
 			}
 		}
 		for (int it = 0; it < factorDepth; it++) {
 			for (int i = 0; i < graph.size(); i++) {
-				pregraph[i] += cos((M_PI * i * it / (factorDepth)) / sequence[sequence.size() - 1.0]);
+				pregraph[i] += cos((M_PI * i * 2.0 * it / (factorDepth)));
 			}
 			if (checkCloser(graph, pregraph, sequence, factorDepth)) {
 				for (int i = 0; i < graph.size(); i++) {
-					graph[i] += cos((M_PI * i * it / (factorDepth)) / sequence[sequence.size() - 1.0]);
+					graph[i] += cos((M_PI * i * 2.0 * it / (factorDepth)));
 				}
 				frequencies[ik].push_back(it);
 			}
 			if (!checkCloser(graph, pregraph, sequence, factorDepth)) {
 				for (int i = 0; i < graph.size(); i++) {
-					pregraph[i] -= cos((M_PI * i * it / (factorDepth)) / sequence[sequence.size() - 1.0]);
+					pregraph[i] -= cos((M_PI * i * 2.0 * it / (factorDepth)));
 				}
 			}
 		}
 		for (int it = 0; it < factorDepth; it++) {
 			for (int i = 0; i < graph.size(); i++) {
-				pregraph[i] += cos((M_PI * i * it / (factorDepth)) / sequence[sequence.size() - 1.0]);
+				pregraph[i] += cos((M_PI * i * 2.0 * it / (factorDepth)));
 			}
 			if (checkCloser(graph, pregraph, sequence, factorDepth)) {
 				for (int i = 0; i < graph.size(); i++) {
-					graph[i] += cos((M_PI * i * it / (factorDepth)) / sequence[sequence.size() - 1.0]);
+					graph[i] += cos((M_PI * i * 2.0 * it / (factorDepth)));
 				}
 				frequencies[ik].push_back(it);
 			}
 			if (!checkCloser(graph, pregraph, sequence, factorDepth)) {
 				for (int i = 0; i < graph.size(); i++) {
-					pregraph[i] -= cos((M_PI * i * it / (factorDepth)) / sequence[sequence.size() - 1.0]);
+					pregraph[i] -= cos((M_PI * i * 2.0 * it / (factorDepth)));
 				}
 			}
 		}
@@ -300,7 +301,6 @@ void modulaSeq(std::vector<std::vector<double>>seq, double depth, double factorD
 	std::cout << "\n \n \n Done sequencing frequency approximation scheduling. Sequence of frequencies (depth " << factorDepth << "). \n";
 	
 }
-
 
 
 

@@ -64,7 +64,7 @@ void calcSeq(double depth) {
 								}
 							}
 							if (ii == 0) {
-								if (uniqueValues[i][it][io] == (depth*2)) {
+								if (uniqueValues[i][it][io] == (DBL_MAX)) {
 									found=true;
 								}
 							}
@@ -75,7 +75,7 @@ void calcSeq(double depth) {
 								uniqueValues[i][it].push_back(iu/ii);
 							}
 							if (ii == 0) {
-								uniqueValues[i][it].push_back((depth*2));
+								uniqueValues[i][it].push_back((DBL_MAX));
 							}
 						}
 					}

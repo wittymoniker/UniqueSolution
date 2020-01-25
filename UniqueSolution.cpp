@@ -338,23 +338,23 @@ void modulaSeq(std::vector<std::vector<std::vector<double>>>seq, double factorDe
 		std::cout << frequencies[0][i] << ", ";
 	}
 	std::cout << "\n Quotient sequence cosine frequencies: \n";
-	for (int i = 0; i < frequencies[0].size(); i++) {
+	for (int i = 0; i < frequencies[1].size(); i++) {
 		std::cout << frequencies[1][i] << ", ";
 	}
 	std::cout << "\n Difference sequenc cosine frequencies: \n";
-	for (int i = 0; i < frequencies[0].size(); i++) {
+	for (int i = 0; i < frequencies[2].size(); i++) {
 		std::cout << frequencies[2][i] << ", ";
 	}
 	std::cout << "\n Addend sequence cosine frequencies: \n";
-	for (int i = 0; i < frequencies[0].size(); i++) {
+	for (int i = 0; i < frequencies[3].size(); i++) {
 		std::cout << frequencies[3][i] << ", ";
 	}
 	std::cout << "\n Product sequence cosine frequencies: \n";
-	for (int i = 0; i < frequencies[0].size(); i++) {
+	for (int i = 0; i < frequencies[4].size(); i++) {
 		std::cout << frequencies[4][i] << ", ";
 	}
 	std::cout << "\n Powers sequence cosine frequencies: \n";
-	for (int i = 0; i < frequencies[0].size(); i++) {
+	for (int i = 0; i < frequencies[5].size(); i++) {
 		std::cout << frequencies[5][i] << ", ";
 	}
 
@@ -550,23 +550,23 @@ void curveSeq(std::vector<std::vector<std::vector<double>>>seq, double factorDep
 		std::cout << factors[0][i] << ", ";
 	}
 	std::cout << "\n Quotient sequence curve factors: \n";
-	for (int i = 0; i < factors[0].size(); i++) {
+	for (int i = 0; i < factors[1].size(); i++) {
 		std::cout << factors[1][i] << ", ";
 	}
 	std::cout << "\n Difference sequence curve factors: \n";
-	for (int i = 0; i < factors[0].size(); i++) {
+	for (int i = 0; i < factors[2].size(); i++) {
 		std::cout << factors[2][i] << ", ";
 	}
 	std::cout << "\n Addend sequence curve factors: \n";
-	for (int i = 0; i < factors[0].size(); i++) {
+	for (int i = 0; i < factors[3].size(); i++) {
 		std::cout << factors[3][i] << ", ";
 	}
 	std::cout << "\n Product sequence curve factors: \n";
-	for (int i = 0; i < factors[0].size(); i++) {
+	for (int i = 0; i < factors[4].size(); i++) {
 		std::cout << factors[4][i] << ", ";
 	}
 	std::cout << "\n Powers sequence curve factors: \n";
-	for (int i = 0; i < factors[0].size(); i++) {
+	for (int i = 0; i < factors[5].size(); i++) {
 		std::cout << factors[5][i] << ", ";
 	}
 

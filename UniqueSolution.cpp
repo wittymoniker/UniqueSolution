@@ -184,12 +184,12 @@ bool checkCloser(std::vector<double>graph, std::vector<double>pregraph, std::vec
     nearingAnswerVector[0].resize(0);
     nearingAnswerVector[1].resize(0);
     for (int ic = 0; ic < sequence.size(); ic++) {
-        if (abs(graph.at(sequence[ic]*factorDepth))> abs(pregraph.at(sequence[ic] * factorDepth-1))) {
+        if (abs(graph.at(sequence[ic]*factorDepth))> abs(pregraph.at(sequence[ic] * factorDepth))) {
             for (int f = 0; f < factorDepth +1; f++) {
                 nearingAnswerVector[0].push_back(true);
             }
         }
-        if (abs(graph.at(sequence[ic]*factorDepth)) <= abs(pregraph.at(sequence[ic] * factorDepth-1))) {
+        if (abs(graph.at(sequence[ic]*factorDepth)) <= abs(pregraph.at(sequence[ic] * factorDepth))) {
             for (int f = 0; f < factorDepth +1; f++) {
                 nearingAnswerVector[1].push_back(true);
             }
@@ -251,10 +251,10 @@ void modulaSeq(std::vector<std::vector<std::vector<double>>>seq, double factorDe
         }
         graph.resize(0);
         pregraph.resize(0);
-        graph.resize(factorDepth * (depth));
-        pregraph.resize(factorDepth * (depth));
-        pregrapha.resize(factorDepth * (depth));
-        pregraphs.resize(factorDepth * (depth));
+        graph.resize(factorDepth * (depth+1));
+        pregraph.resize(factorDepth * (depth+1));
+        pregrapha.resize(factorDepth * (depth+1));
+        pregraphs.resize(factorDepth * (depth+1));
         for (int it = 1; it < factorDepth * factorDepth; it++) {
             for (int i = 0; i < graph.size(); i++) {
                 pregrapha[i] += cos((M_PI * i * factorDepth / it));
@@ -618,7 +618,7 @@ bool powcheckCloser(std::vector<double>graph, std::vector<double>pregraph, std::
                 nearingAnswerVector[1].push_back(true);
             }
         }
-        if (abs(graph.at((sequence[im]) * factorDepth-1) - (sequence[im])) > abs(pregraph.at((sequence[im]) * factorDepth-1) - (sequence[im]))) {
+        if (abs(graph.at((sequence[im]) * factorDepth) - (sequence[im])) > abs(pregraph.at((sequence[im]) * factorDepth) - (sequence[im]))) {
             for (int i = 0; i < factorDepth+1 ; i++) {
                 nearingAnswerVector[0].push_back(true);
             }
@@ -688,10 +688,10 @@ void curveSeq(std::vector<std::vector<std::vector<double>>>seq, double factorDep
         graph.resize(0);
         pregrapha.resize(0);
         pregraphs.resize(0);
-        graph.resize(factorDepth * (depth ));
-        pregraph.resize(factorDepth * (depth ));
-        pregrapha.resize(factorDepth * (depth));
-        pregraphs.resize(factorDepth * (depth ));
+        graph.resize(factorDepth * (depth +1));
+        pregraph.resize(factorDepth * (depth +1));
+        pregrapha.resize(factorDepth * (depth+1));
+        pregraphs.resize(factorDepth * (depth +1));
         for (int it = 0; it < factorDepth; it++) {
             for (int i = 0; i < graph.size(); i++) {
                 pregrapha[i] += pow(i / factorDepth, ((it / (factorDepth / (2 / (factorDepth))))));

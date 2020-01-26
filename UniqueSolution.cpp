@@ -157,7 +157,7 @@ void calcSeq(double depth) {
 
 bool findInList(std::vector<double>list, double num) {
 	for (int m = 0; m < list.size(); m++) {
-		if (list[m] == num) {
+		if (abs(list[m]) == abs(num)) {
 			return true;
 		}
 	}

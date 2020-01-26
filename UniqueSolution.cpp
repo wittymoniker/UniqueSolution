@@ -203,21 +203,6 @@ bool checkCloser(std::vector<double>pregraph, std::vector<double>graph, std::vec
 		if (abs(pregraph[ib]) < abs(graph[ib])) {
 			nearingAnswerVector[1].push_back(true);
 		}
-		/*for (int in = 0; in < sequence.size();in++) {
-			if (ib / factorDepth == sequence[in]) {
-				if (abs(pregraph[ib]) < abs(graph[ib])) {
-					if (nearingAnswerVector[1].size() > 0) {
-						nearingAnswerVector[1].resize(nearingAnswerVector[1].size() - 1);
-					}
-
-				}
-				if (abs(graph[ib]) < abs(pregraph[ib])) {
-					if (nearingAnswerVector[0].size() > 0) {
-						nearingAnswerVector[0].resize(nearingAnswerVector[0].size() - 1);
-					}
-				}
-			}
-		}*/
 	}
 	if (nearingAnswerVector[0].size() > nearingAnswerVector[1].size()) {
 		return true;
@@ -661,21 +646,6 @@ bool powcheckCloser(std::vector<double>pregraph, std::vector<double>graph, std::
 			if (abs(pregraph[iz] - sequence[round(iz / factorDepth)]) > abs(graph[iz] - sequence[round(iz / factorDepth)])) {
 				nearingAnswerVector[1].push_back(true);
 			}
-			/*for (int iq = 0; iq < factorDepth; iq++) {
-				if (iz*factorDepth+iq == sequence[round(iz / factorDepth)]) {
-					if (abs(pregraph[iz] - sequence[round(iz / factorDepth)]) > abs(graph[iz] - sequence[round(iz / factorDepth)])) {
-						if (nearingAnswerVector[0].size() > 0) {
-							nearingAnswerVector[0].resize(nearingAnswerVector[0].size() - 1);
-						}
-
-					}
-					if (abs(graph[iz] - sequence[round(iz / factorDepth)]) <= abs(pregraph[iz] - sequence[round(iz / factorDepth)])) {
-						if (nearingAnswerVector[1].size() > 0) {
-							nearingAnswerVector[1].resize(nearingAnswerVector[1].size() - 1);
-						}
-					}
-				}
-			}*/
 		}
 
 	}
@@ -1134,7 +1104,7 @@ int main()
 		std::cin >> depth;
 		std::cout << "\n Processing depth: " << depth << ".";
 		std::cout << "\n And, for after the sequences are loaded:" <<
-			"\n Factorization hunt depth (number of factors to consider before rerouting (suggest minimum " << round(pow(depth,0.5)) << ")) : ";
+			"\n Factorization hunt depth (number of factors to consider before rerouting (suggest minimum " << floor(depth*0.5) << ")) : ";
 		std::cin >> factorizationDepth;
 		calcSeq(depth);
 

@@ -185,12 +185,12 @@ bool checkCloser(std::vector<double>graph, std::vector<double>pregraph, std::vec
     nearingAnswerVector[1].resize(0);
     for (int ic = 0; ic < sequence.size(); ic++) {
         if (abs(graph.at(sequence[ic]*factorDepth))> abs(pregraph.at(sequence[ic] * factorDepth))) {
-            for (int f = 0; f < (sequence[sequence.size()-1]/sequence.size()); f++) {
+            for (int f = 0; f < (sequence[sequence.size()-1]/sequence.size()+factorDepth); f++) {
                 nearingAnswerVector[0].push_back(true);
             }
         }
         if (abs(graph.at(sequence[ic]*factorDepth)) <= abs(pregraph.at(sequence[ic] * factorDepth))) {
-            for (int f = 0; f < (sequence[sequence.size() - 1] / sequence.size()); f++) {
+            for (int f = 0; f < (sequence[sequence.size() - 1] / sequence.size()+factorDepth); f++) {
                 nearingAnswerVector[1].push_back(true);
             }
         }

@@ -761,8 +761,8 @@ void curveSeq(std::vector<std::vector<std::vector<double>>>seq, double factorDep
 					}
 					if (checkCloser(pregraphs, pregrapha, sequence, factorDepth) == true) {
 						for (int i = 0; i < graph.size(); i++) {
-							pregrapha[i] -= 2* cos((M_PI * i * factorDepth / it));
-							graph[i] -= cos((M_PI * i * factorDepth / it));
+							pregrapha[i] -= 2* pow(i / factorDepth, (it / (factorDepth * (factorDepth / 2))));
+							graph[i] -= pow(i / factorDepth, (it / (factorDepth * (factorDepth / 2))));
 
 						}
 						factors[ie].push_back(-(it / (factorDepth * (factorDepth / 2))));
@@ -813,8 +813,8 @@ void curveSeq(std::vector<std::vector<std::vector<double>>>seq, double factorDep
 					}
 					if (checkCloser(pregraphs, pregrapha, sequence, factorDepth) == true) {
 						for (int i = 0; i < graph.size(); i++) {
-							pregrapha[i] -= 2 * cos((M_PI * i * factorDepth / it));
-							graph[i] -= cos((M_PI * i * factorDepth / it));
+							pregrapha[i] -= 2 * pow(i / factorDepth, (it / (factorDepth * (factorDepth / 2))));
+							graph[i] -= pow(i / factorDepth, (it / (factorDepth * (factorDepth / 2))));
 
 						}
 						factors[ie].push_back(-(it / (factorDepth * (factorDepth / 2))));
@@ -865,8 +865,8 @@ void curveSeq(std::vector<std::vector<std::vector<double>>>seq, double factorDep
 					}
 					if (checkCloser(pregraphs, pregrapha, sequence, factorDepth) == true) {
 						for (int i = 0; i < graph.size(); i++) {
-							pregrapha[i] -= 2 * cos((M_PI * i * factorDepth / it));
-							graph[i] -= cos((M_PI * i * factorDepth / it));
+							pregrapha[i] -= 2 * pow(i / factorDepth, (it / (factorDepth * (factorDepth / 2))));
+							graph[i] -= pow(i / factorDepth, (it / (factorDepth * (factorDepth / 2))));
 
 						}
 						factors[ie].push_back(-(it / (factorDepth * (factorDepth / 2))));
@@ -917,8 +917,8 @@ void curveSeq(std::vector<std::vector<std::vector<double>>>seq, double factorDep
 					}
 					if (checkCloser(pregraphs, pregrapha, sequence, factorDepth) == true) {
 						for (int i = 0; i < graph.size(); i++) {
-							pregrapha[i] -= 2 * cos((M_PI * i * factorDepth / it));
-							graph[i] -= cos((M_PI * i * factorDepth / it));
+							pregrapha[i] -= 2 * pow(i / factorDepth, (it / (factorDepth * (factorDepth / 2))));
+							graph[i] -= pow(i / factorDepth, (it / (factorDepth * (factorDepth / 2))));
 
 						}
 						factors[ie].push_back(-(it / (factorDepth * (factorDepth / 2))));
@@ -969,8 +969,8 @@ void curveSeq(std::vector<std::vector<std::vector<double>>>seq, double factorDep
 					}
 					if (checkCloser(pregraphs, pregrapha, sequence, factorDepth) == true) {
 						for (int i = 0; i < graph.size(); i++) {
-							pregrapha[i] -= 2 * cos((M_PI * i * factorDepth / it));
-							graph[i] -= cos((M_PI * i * factorDepth / it));
+							pregrapha[i] -= 2 * pow(i / factorDepth, (it / (factorDepth * (factorDepth / 2))));
+							graph[i] -= pow(i / factorDepth, (it / (factorDepth * (factorDepth / 2))));
 
 						}
 						factors[ie].push_back(-(it / (factorDepth * (factorDepth / 2))));
@@ -1021,8 +1021,8 @@ void curveSeq(std::vector<std::vector<std::vector<double>>>seq, double factorDep
 					}
 					if (checkCloser(pregraphs, pregrapha, sequence, factorDepth) == true) {
 						for (int i = 0; i < graph.size(); i++) {
-							pregrapha[i] -= 2 * cos((M_PI * i * factorDepth / it));
-							graph[i] -= cos((M_PI * i * factorDepth / it));
+							pregrapha[i] -= 2 * pow(i / factorDepth, (it / (factorDepth * (factorDepth / 2))));
+							graph[i] -= pow(i / factorDepth, (it / (factorDepth * (factorDepth / 2))));
 
 						}
 						factors[ie].push_back(-(it / (factorDepth * (factorDepth / 2))));
@@ -1073,8 +1073,8 @@ void curveSeq(std::vector<std::vector<std::vector<double>>>seq, double factorDep
 					}
 					if (checkCloser(pregraphs, pregrapha, sequence, factorDepth) == true) {
 						for (int i = 0; i < graph.size(); i++) {
-							pregrapha[i] -= 2 * cos((M_PI * i * factorDepth / it));
-							graph[i] -= cos((M_PI * i * factorDepth / it));
+							pregrapha[i] -= 2 * pow(i / factorDepth, (it / (factorDepth * (factorDepth / 2))));
+							graph[i] -= pow(i / factorDepth, (it / (factorDepth * (factorDepth / 2))));
 
 						}
 						factors[ie].push_back(-(it / (factorDepth * (factorDepth / 2))));
@@ -1134,7 +1134,7 @@ int main()
 		std::cin >> depth;
 		std::cout << "\n Processing depth: " << depth << ".";
 		std::cout << "\n And, for after the sequences are loaded:" <<
-			"\n Factorization hunt depth (number of factors to consider before rerouting (suggest minimum " << round(pow(depth,1.618)) << ")) : ";
+			"\n Factorization hunt depth (number of factors to consider before rerouting (suggest minimum " << round(pow(depth,0.5)) << ")) : ";
 		std::cin >> factorizationDepth;
 		calcSeq(depth);
 

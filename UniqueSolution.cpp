@@ -530,19 +530,19 @@ int main()
 			" The Number of Unique Identities Created by the Six Major Operations on Any Two Integers 0-X \n" <<
 			" Enter Depth of the Six Functions sequences to be indexed: ";
 		std::cin >> depth;
-		std::cout << "\n Processing depth: " << depth << ".";
+		std::cout << "\n \n \n Processing depth: " << depth << ".";
 		std::cout << "\n And, for after the sequences are loaded:" <<
-			"\n Factorization hunt depth (number of factors to consider before rerouting (suggest " << round(depth*0.5) << ")) : ";
+			"\n Factorization hunt depth (number of factors to consider before rerouting (suggest minimum " << depth << ")) : ";
 		std::cin >> factorizationDepth;
-		std::cout<<"\n Cycle length: (even numbers greater than two, suggest " << round(pow(depth,.5)) << ")) : ";
+		std::cout<<"\n Cycle length: (even numbers greater than two, suggest minimum " << round(pow(depth,.5)) << ")) : ";
 		std::cin >> cycles;
 		calcSeq(depth);
 
 
-		std::cout << "\n \n OK......  Cosine Frequencies Solutions Solver run. \n";
+		std::cout << "\n OK......  Cosine Frequencies Solutions Solver run. \n";
 		modulaSeq(uniqueValues, factorizationDepth);
 
-		std::cout << "\n \n OK......  Relations Curve Solutions Solver run. \n";
+		std::cout << "\n OK......  Relations Curve Solutions Solver run. \n";
 		curveSeq(uniqueValues, factorizationDepth);
 
 		std::cout << "\n done?(0/1): ";

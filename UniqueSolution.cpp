@@ -292,7 +292,7 @@ void modulaSeq(std::vector<std::vector<std::vector<double>>>seq, double factorDe
 							graph[i] += cos((M_PI * i * 2 * factorDepth / (it * factorDepth)));
 
 						}
-						frequencies[ik].push_back(factorDepth / it);
+						frequencies[ik].push_back(factorDepth / (it * factorDepth));
 					}
 					if (checkCloser(pregraphs, pregrapha, sequence, factorDepth) == true && (frequencies[ik].empty() || !(frequencies[ik].back() < 0)) && findInList(frequencies[ik], (factorDepth / (it * factorDepth))) == false) {
 						for (int i = 0; i < graph.size(); i++) {

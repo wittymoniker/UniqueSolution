@@ -185,12 +185,12 @@ bool checkCloser(std::vector<double>pregraph, std::vector<double>graph, std::vec
 	nearingAnswerVector[1].resize(0);
 	for (int ic = 0; ic < sequence.size(); ic++) {
 		if (abs(graph.at(sequence[ic] * factorDepth)) > abs(pregraph.at(sequence[ic] * factorDepth))) {
-			for (int f = 0; f < (sequence[sequence.size() - 1] / sequence.size()); f++) {
+			for (int f = 0; f < (factorDepth*sequence[sequence.size()-1]/sequence.size()+1); f++) {
 				nearingAnswerVector[0].push_back(true);
 			}
 		}
 		if (abs(graph.at(sequence[ic] * factorDepth)) <= abs(pregraph.at(sequence[ic] * factorDepth))) {
-			for (int f = 0; f < (sequence[sequence.size() - 1] / sequence.size()); f++) {
+			for (int f = 0; f < (factorDepth * sequence[sequence.size() - 1] / sequence.size())+1; f++) {
 				nearingAnswerVector[1].push_back(true);
 			}
 		}
@@ -416,7 +416,7 @@ void curveSeq(std::vector<std::vector<std::vector<double>>>seq, double factorDep
 				}
 				if (powcheckCloser(pregrapha, graph, sequence, factorDepth) == false && checkCloser(pregraphs, graph, sequence, factorDepth) == true
 					&& findInList(factors[ie], (it / (factorDepth * (factorDepth / 2)))) == false) {
-					if (factors[ie].empty() || !(factors[ie].back() < 0)) {
+					if (factors[ie].empty() || !(factors[ie].back() <= 0)) {
 						for (int i = 0; i < graph.size(); i++) {
 							pregrapha[i] -= 2 * pow(i / factorDepth, (it / (factorDepth * (factorDepth / 2))));
 							graph[i] += pow(i / factorDepth, (it / (factorDepth * (factorDepth / 2))));
@@ -468,7 +468,7 @@ void curveSeq(std::vector<std::vector<std::vector<double>>>seq, double factorDep
 							}
 							factors[ie].push_back((it / (factorDepth * (factorDepth / 2))));
 						}
-						if (checkCloser(pregraphs, pregrapha, sequence, factorDepth) == true && (factors[ie].empty() || !(factors[ie].back() < 0)) && findInList(factors[ie], (it / (factorDepth * (factorDepth / 2)))) == false) {
+						if (checkCloser(pregraphs, pregrapha, sequence, factorDepth) == true && (factors[ie].empty() || !(factors[ie].back() <= 0)) && findInList(factors[ie], (it / (factorDepth * (factorDepth / 2)))) == false) {
 							for (int i = 0; i < graph.size(); i++) {
 								pregrapha[i] -= 2 * pow(i / factorDepth, (it / (factorDepth * (factorDepth / 2))));
 								graph[i] -= pow(i / factorDepth, (it / (factorDepth * (factorDepth / 2))));

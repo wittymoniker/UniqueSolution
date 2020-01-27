@@ -532,7 +532,7 @@ int main()
 		std::cin >> depth;
 		std::cout << "\n \n \n Processing depth: " << depth << ".";
 		std::cout << "\n And, for after the sequences are loaded:" <<
-			"\n Factorization hunt depth (number of factors to consider before rerouting (suggest minimum " << depth << ")) : ";
+			"\n Factorization hunt depth (number of factors to consider before rerouting (suggest minimum " << round(pow(depth,1.5)) << ")) : ";
 		std::cin >> factorizationDepth;
 		std::cout<<"\n Cycle length: (even numbers greater than two, suggest minimum " << round(pow(depth,.5)) << ")) : ";
 		std::cin >> cycles;

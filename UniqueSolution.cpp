@@ -10,7 +10,7 @@
 
 
 std::vector<std::vector<std::vector<double>>> uniqueValues(6);
-
+int cycles;
 
 void calcSeq(double depth) {
 	for (double it = 0; it < 6; it++) {
@@ -225,7 +225,7 @@ void modulaSeq(std::vector<std::vector<std::vector<double>>>seq, double factorDe
 
 	frequencies.resize(0);
 	frequencies.resize(6);
-	std::cout << "\n Searching for combinations of cosine modulations to fit sequence, scanning range three times for patterning.";
+	std::cout << "\n Searching for combinations of cosine modulations to fit sequence, scanning range "<<cycles<<" times for patterning.";
 	for (int ik = 0; ik < 6; ik++) {
 		std::cout << "\n " << ik << "Set processing cosines, \n";
 		sequence.resize(0);
@@ -237,201 +237,71 @@ void modulaSeq(std::vector<std::vector<std::vector<double>>>seq, double factorDe
 		graph.resize(factorDepth * (depth + 1));
 		pregrapha.resize(factorDepth * (depth + 1));
 		pregraphs.resize(factorDepth * (depth + 1));
-		for (int it = 1; it < factorDepth * factorDepth; it++) {
-			for (int i = 0; i < graph.size() && findInList(frequencies[ik], (factorDepth / (it * factorDepth))) == false; i++) {
+		for (int z = 0; z < cycles; z++) {
+			for (int it = 1; it < factorDepth * factorDepth; it++) {
+				for (int i = 0; i < graph.size() && findInList(frequencies[ik], (factorDepth / (it * factorDepth))) == false; i++) {
 
-				pregrapha[i] += cos((M_PI * i * 2*factorDepth / (it*factorDepth)));
-				pregraphs[i] -= cos((M_PI * i * 2 * factorDepth / (it * factorDepth)));
-			}
-			if (checkCloser(pregrapha, graph, sequence, factorDepth) == false && checkCloser(pregraphs, graph, sequence, factorDepth) == true
-				&& findInList(frequencies[ik], (factorDepth / (it * factorDepth))) == false) {
-				if ((frequencies[ik].empty() || !(frequencies[ik].back() < 0))) {
-					for (int i = 0; i < graph.size(); i++) {
-						pregrapha[i] -= 2 * cos((M_PI * i * 2 * factorDepth / (it * factorDepth)));
-						graph[i] -= cos((M_PI * i * 2 * factorDepth / (it * factorDepth)));
-					}
-					frequencies[ik].push_back(-factorDepth / (it * factorDepth));
+					pregrapha[i] += cos((M_PI * i * 2 * factorDepth / (it * factorDepth)));
+					pregraphs[i] -= cos((M_PI * i * 2 * factorDepth / (it * factorDepth)));
 				}
-				else {
+				if (checkCloser(pregrapha, graph, sequence, factorDepth) == false && checkCloser(pregraphs, graph, sequence, factorDepth) == true
+					&& findInList(frequencies[ik], (factorDepth / (it * factorDepth))) == false) {
+					if ((frequencies[ik].empty() || !(frequencies[ik].back() < 0))) {
+						for (int i = 0; i < graph.size(); i++) {
+							pregrapha[i] -= 2 * cos((M_PI * i * 2 * factorDepth / (it * factorDepth)));
+							graph[i] -= cos((M_PI * i * 2 * factorDepth / (it * factorDepth)));
+						}
+						frequencies[ik].push_back(-factorDepth / (it * factorDepth));
+					}
+					else {
+						for (int i = 0; i < graph.size(); i++) {
+							pregrapha[i] -= cos((M_PI * i * 2 * factorDepth / (it * factorDepth)));
+							pregraphs[i] += cos((M_PI * i * 2 * factorDepth / (it * factorDepth)));
+						}
+					}
+
+				}
+				if (checkCloser(pregrapha, graph, sequence, factorDepth) == true && checkCloser(pregraphs, graph, sequence, factorDepth) == false
+					&& findInList(frequencies[ik], (factorDepth / (it * factorDepth))) == false) {
+					if ((frequencies[ik].empty() || !(frequencies[ik].back() > 0))) {
+						for (int i = 0; i < graph.size(); i++) {
+							pregrapha[i] -= 2 * cos((M_PI * i * 2 * factorDepth / (it * factorDepth)));
+							graph[i] -= cos((M_PI * i * 2 * factorDepth / (it * factorDepth)));
+						}
+						frequencies[ik].push_back(factorDepth / (it * factorDepth));
+					}
+					else {
+						for (int i = 0; i < graph.size(); i++) {
+							pregrapha[i] -= cos((M_PI * i * 2 * factorDepth / (it * factorDepth)));
+							pregraphs[i] += cos((M_PI * i * 2 * factorDepth / (it * factorDepth)));
+						}
+					}
+				}
+				if (checkCloser(pregrapha, graph, sequence, factorDepth) == false && checkCloser(pregraphs, graph, sequence, factorDepth) == false) {
 					for (int i = 0; i < graph.size(); i++) {
-						pregrapha[i] -= cos((M_PI * i * 2 * factorDepth / (it * factorDepth)));
 						pregraphs[i] += cos((M_PI * i * 2 * factorDepth / (it * factorDepth)));
-					}
-				}
-				
-			}
-			if (checkCloser(pregrapha, graph, sequence, factorDepth) == true && checkCloser(pregraphs, graph, sequence, factorDepth) == false
-				&& findInList(frequencies[ik], (factorDepth / (it * factorDepth))) == false ) {
-				if ((frequencies[ik].empty() || !(frequencies[ik].back() > 0))) {
-					for (int i = 0; i < graph.size(); i++) {
-						pregrapha[i] -= 2 * cos((M_PI * i * 2 * factorDepth / (it * factorDepth)));
-						graph[i] -= cos((M_PI * i * 2 * factorDepth / (it * factorDepth)));
-					}
-					frequencies[ik].push_back(factorDepth / (it * factorDepth));
-				}
-				else {
-					for (int i = 0; i < graph.size(); i++) {
 						pregrapha[i] -= cos((M_PI * i * 2 * factorDepth / (it * factorDepth)));
-						pregraphs[i] += cos((M_PI * i * 2 * factorDepth / (it * factorDepth)));
-					}
-				}
-			}
-			if (checkCloser(pregrapha, graph, sequence, factorDepth) == false && checkCloser(pregraphs, graph, sequence, factorDepth) == false) {
-				for (int i = 0; i < graph.size(); i++) {
-					pregraphs[i] +=  cos((M_PI * i * 2 * factorDepth / (it * factorDepth)));
-					pregrapha[i] -=  cos((M_PI * i * 2 * factorDepth / (it * factorDepth)));
-
-				}
-			}
-			if (checkCloser(pregrapha, graph, sequence, factorDepth) == true && checkCloser(pregraphs, graph, sequence, factorDepth) == true
-				&& findInList(frequencies[ik], (factorDepth / it)) == false) {
-				if (checkCloser(pregrapha, pregraphs, sequence, factorDepth) == true && (frequencies[ik].empty() || !(frequencies[ik].back() > 0)) && findInList(frequencies[ik], (factorDepth / (it * factorDepth))) == false) {
-					for (int i = 0; i < graph.size(); i++) {
-						pregraphs[i] += 2 * cos((M_PI * i * 2 * factorDepth / (it * factorDepth)));
-						graph[i] += cos((M_PI * i * 2 * factorDepth / (it * factorDepth)));
 
 					}
-					frequencies[ik].push_back(factorDepth / it);
 				}
-				if (checkCloser(pregraphs, pregrapha, sequence, factorDepth) == true && (frequencies[ik].empty() || !(frequencies[ik].back() < 0)) && findInList(frequencies[ik], (factorDepth / (it * factorDepth))) == false) {
-					for (int i = 0; i < graph.size(); i++) {
-						pregrapha[i] -= 2 * cos((M_PI * i * 2 * factorDepth / (it * factorDepth)));
-						graph[i] -= cos((M_PI * i * 2 * factorDepth / (it * factorDepth)));
+				if (checkCloser(pregrapha, graph, sequence, factorDepth) == true && checkCloser(pregraphs, graph, sequence, factorDepth) == true
+					&& findInList(frequencies[ik], (factorDepth / it)) == false) {
+					if (checkCloser(pregrapha, pregraphs, sequence, factorDepth) == true && (frequencies[ik].empty() || !(frequencies[ik].back() > 0)) && findInList(frequencies[ik], (factorDepth / (it * factorDepth))) == false) {
+						for (int i = 0; i < graph.size(); i++) {
+							pregraphs[i] += 2 * cos((M_PI * i * 2 * factorDepth / (it * factorDepth)));
+							graph[i] += cos((M_PI * i * 2 * factorDepth / (it * factorDepth)));
 
+						}
+						frequencies[ik].push_back(factorDepth / it);
 					}
-					frequencies[ik].push_back(-factorDepth / (it * factorDepth));
-				}
-			}
-		}
-		for (int it = 1; it < factorDepth * factorDepth; it++) {
-			for (int i = 0; i < graph.size() && findInList(frequencies[ik], (factorDepth / (it * factorDepth))) == false; i++) {
+					if (checkCloser(pregraphs, pregrapha, sequence, factorDepth) == true && (frequencies[ik].empty() || !(frequencies[ik].back() < 0)) && findInList(frequencies[ik], (factorDepth / (it * factorDepth))) == false) {
+						for (int i = 0; i < graph.size(); i++) {
+							pregrapha[i] -= 2 * cos((M_PI * i * 2 * factorDepth / (it * factorDepth)));
+							graph[i] -= cos((M_PI * i * 2 * factorDepth / (it * factorDepth)));
 
-				pregrapha[i] += cos((M_PI * i * 2 * factorDepth / (it * factorDepth)));
-				pregraphs[i] -= cos((M_PI * i * 2 * factorDepth / (it * factorDepth)));
-			}
-			if (checkCloser(pregrapha, graph, sequence, factorDepth) == false && checkCloser(pregraphs, graph, sequence, factorDepth) == true
-				&& findInList(frequencies[ik], (factorDepth / (it * factorDepth))) == false) {
-				if ((frequencies[ik].empty() || !(frequencies[ik].back() < 0))) {
-					for (int i = 0; i < graph.size(); i++) {
-						pregrapha[i] -= 2 * cos((M_PI * i * 2 * factorDepth / (it * factorDepth)));
-						graph[i] -= cos((M_PI * i * 2 * factorDepth / (it * factorDepth)));
+						}
+						frequencies[ik].push_back(-factorDepth / (it * factorDepth));
 					}
-					frequencies[ik].push_back(-factorDepth / (it * factorDepth));
-				}
-				else {
-					for (int i = 0; i < graph.size(); i++) {
-						pregrapha[i] -= cos((M_PI * i * 2 * factorDepth / (it * factorDepth)));
-						pregraphs[i] += cos((M_PI * i * 2 * factorDepth / (it * factorDepth)));
-					}
-				}
-
-			}
-			if (checkCloser(pregrapha, graph, sequence, factorDepth) == true && checkCloser(pregraphs, graph, sequence, factorDepth) == false
-				&& findInList(frequencies[ik], (factorDepth / (it * factorDepth))) == false) {
-				if ((frequencies[ik].empty() || !(frequencies[ik].back() > 0))) {
-					for (int i = 0; i < graph.size(); i++) {
-						pregrapha[i] -= 2 * cos((M_PI * i * 2 * factorDepth / (it * factorDepth)));
-						graph[i] -= cos((M_PI * i * 2 * factorDepth / (it * factorDepth)));
-					}
-					frequencies[ik].push_back(factorDepth / (it * factorDepth));
-				}
-				else {
-					for (int i = 0; i < graph.size(); i++) {
-						pregrapha[i] -= cos((M_PI * i * 2 * factorDepth / (it * factorDepth)));
-						pregraphs[i] += cos((M_PI * i * 2 * factorDepth / (it * factorDepth)));
-					}
-				}
-			}
-			if (checkCloser(pregrapha, graph, sequence, factorDepth) == false && checkCloser(pregraphs, graph, sequence, factorDepth) == false) {
-				for (int i = 0; i < graph.size(); i++) {
-					pregraphs[i] += cos((M_PI * i * 2 * factorDepth / (it * factorDepth)));
-					pregrapha[i] -= cos((M_PI * i * 2 * factorDepth / (it * factorDepth)));
-
-				}
-			}
-			if (checkCloser(pregrapha, graph, sequence, factorDepth) == true && checkCloser(pregraphs, graph, sequence, factorDepth) == true
-				&& findInList(frequencies[ik], (factorDepth / it)) == false) {
-				if (checkCloser(pregrapha, pregraphs, sequence, factorDepth) == true && (frequencies[ik].empty() || !(frequencies[ik].back() > 0)) && findInList(frequencies[ik], (factorDepth / (it * factorDepth))) == false) {
-					for (int i = 0; i < graph.size(); i++) {
-						pregraphs[i] += 2 * cos((M_PI * i * 2 * factorDepth / (it * factorDepth)));
-						graph[i] += cos((M_PI * i * 2 * factorDepth / (it * factorDepth)));
-
-					}
-					frequencies[ik].push_back(factorDepth / it);
-				}
-				if (checkCloser(pregraphs, pregrapha, sequence, factorDepth) == true && (frequencies[ik].empty() || !(frequencies[ik].back() < 0)) && findInList(frequencies[ik], (factorDepth / (it * factorDepth))) == false) {
-					for (int i = 0; i < graph.size(); i++) {
-						pregrapha[i] -= 2 * cos((M_PI * i * 2 * factorDepth / (it * factorDepth)));
-						graph[i] -= cos((M_PI * i * 2 * factorDepth / (it * factorDepth)));
-
-					}
-					frequencies[ik].push_back(-factorDepth / (it * factorDepth));
-				}
-			}
-		}
-		for (int it = 1; it < factorDepth * factorDepth; it++) {
-			for (int i = 0; i < graph.size() && findInList(frequencies[ik], (factorDepth / (it * factorDepth))) == false; i++) {
-
-				pregrapha[i] += cos((M_PI * i * 2 * factorDepth / (it * factorDepth)));
-				pregraphs[i] -= cos((M_PI * i * 2 * factorDepth / (it * factorDepth)));
-			}
-			if (checkCloser(pregrapha, graph, sequence, factorDepth) == false && checkCloser(pregraphs, graph, sequence, factorDepth) == true
-				&& findInList(frequencies[ik], (factorDepth / (it * factorDepth))) == false) {
-				if ((frequencies[ik].empty() || !(frequencies[ik].back() < 0))) {
-					for (int i = 0; i < graph.size(); i++) {
-						pregrapha[i] -= 2 * cos((M_PI * i * 2 * factorDepth / (it * factorDepth)));
-						graph[i] -= cos((M_PI * i * 2 * factorDepth / (it * factorDepth)));
-					}
-					frequencies[ik].push_back(-factorDepth / (it * factorDepth));
-				}
-				else {
-					for (int i = 0; i < graph.size(); i++) {
-						pregrapha[i] -= cos((M_PI * i * 2 * factorDepth / (it * factorDepth)));
-						pregraphs[i] += cos((M_PI * i * 2 * factorDepth / (it * factorDepth)));
-					}
-				}
-
-			}
-			if (checkCloser(pregrapha, graph, sequence, factorDepth) == true && checkCloser(pregraphs, graph, sequence, factorDepth) == false
-				&& findInList(frequencies[ik], (factorDepth / (it * factorDepth))) == false) {
-				if ((frequencies[ik].empty() || !(frequencies[ik].back() > 0))) {
-					for (int i = 0; i < graph.size(); i++) {
-						pregrapha[i] -= 2 * cos((M_PI * i * 2 * factorDepth / (it * factorDepth)));
-						graph[i] -= cos((M_PI * i * 2 * factorDepth / (it * factorDepth)));
-					}
-					frequencies[ik].push_back(factorDepth / (it * factorDepth));
-				}
-				else {
-					for (int i = 0; i < graph.size(); i++) {
-						pregrapha[i] -= cos((M_PI * i * 2 * factorDepth / (it * factorDepth)));
-						pregraphs[i] += cos((M_PI * i * 2 * factorDepth / (it * factorDepth)));
-					}
-				}
-			}
-			if (checkCloser(pregrapha, graph, sequence, factorDepth) == false && checkCloser(pregraphs, graph, sequence, factorDepth) == false) {
-				for (int i = 0; i < graph.size(); i++) {
-					pregraphs[i] += cos((M_PI * i * 2 * factorDepth / (it * factorDepth)));
-					pregrapha[i] -= cos((M_PI * i * 2 * factorDepth / (it * factorDepth)));
-
-				}
-			}
-			if (checkCloser(pregrapha, graph, sequence, factorDepth) == true && checkCloser(pregraphs, graph, sequence, factorDepth) == true
-				&& findInList(frequencies[ik], (factorDepth / it)) == false) {
-				if (checkCloser(pregrapha, pregraphs, sequence, factorDepth) == true && (frequencies[ik].empty() || !(frequencies[ik].back() > 0)) && findInList(frequencies[ik], (factorDepth / (it * factorDepth))) == false) {
-					for (int i = 0; i < graph.size(); i++) {
-						pregraphs[i] += 2 * cos((M_PI * i * 2 * factorDepth / (it * factorDepth)));
-						graph[i] += cos((M_PI * i * 2 * factorDepth / (it * factorDepth)));
-
-					}
-					frequencies[ik].push_back(factorDepth / it);
-				}
-				if (checkCloser(pregraphs, pregrapha, sequence, factorDepth) == true && (frequencies[ik].empty() || !(frequencies[ik].back() < 0)) && findInList(frequencies[ik], (factorDepth / (it * factorDepth))) == false) {
-					for (int i = 0; i < graph.size(); i++) {
-						pregrapha[i] -= 2 * cos((M_PI * i * 2 * factorDepth / (it * factorDepth)));
-						graph[i] -= cos((M_PI * i * 2 * factorDepth / (it * factorDepth)));
-
-					}
-					frequencies[ik].push_back(-factorDepth / (it * factorDepth));
 				}
 			}
 		}
@@ -523,7 +393,7 @@ void curveSeq(std::vector<std::vector<std::vector<double>>>seq, double factorDep
 	factors.resize(0);
 	factors.resize(6);
 
-	std::cout << "\n Searching for combinations of curve power factors to fit sequence, scanning range three times for patterning.";
+	std::cout << "\n Searching for combinations of curve power factors to fit sequence, scanning range " << cycles << " times for patterning.";
 	for (int ie = 0; ie < 6; ie++) {
 		std::cout << "\n " << ie << "Set processing powers, \n";
 		sequence.resize(0);
@@ -537,215 +407,75 @@ void curveSeq(std::vector<std::vector<std::vector<double>>>seq, double factorDep
 		graph.resize(factorDepth * (depth + 1));
 		pregrapha.resize(factorDepth * (depth + 1));
 		pregraphs.resize(factorDepth * (depth + 1));
-		for (int it = 0; it < factorDepth * factorDepth; it++) {
-			for (int i = 0; i < graph.size() && findInList(factors[ie], (it / (factorDepth * (factorDepth / 2)))) == false; i++) {
+		for(int z=0; z<cycles;z++){
+			for (int it = 0; it < factorDepth * factorDepth; it++) {
+				for (int i = 0; i < graph.size() && findInList(factors[ie], (it / (factorDepth * (factorDepth / 2)))) == false; i++) {
 
-				pregrapha[i] += pow(i / factorDepth, (it / (factorDepth*(factorDepth/2))));
-				pregraphs[i] -= pow(i / factorDepth, (it / (factorDepth * (factorDepth / 2))));
-			}
-			if (powcheckCloser(pregrapha, graph, sequence, factorDepth) == false && checkCloser(pregraphs, graph, sequence, factorDepth) == true
-				&& findInList(factors[ie], (it / (factorDepth * (factorDepth / 2)))) == false) {
-				if (factors[ie].empty() || !(factors[ie].back() < 0)) {
-					for (int i = 0; i < graph.size(); i++) {
-						pregrapha[i] -= 2 * pow(i / factorDepth, (it / (factorDepth * (factorDepth / 2))));
-						graph[i] += pow(i / factorDepth, (it / (factorDepth * (factorDepth / 2))));
-					}
-					factors[ie].push_back(-(it / (factorDepth * (factorDepth / 2))));
+					pregrapha[i] += pow(i / factorDepth, (it / (factorDepth * (factorDepth / 2))));
+					pregraphs[i] -= pow(i / factorDepth, (it / (factorDepth * (factorDepth / 2))));
 				}
-				else {
-					for (int i = 0; i < graph.size(); i++) {
-						pregraphs[i] += pow(i / factorDepth, (it / (factorDepth * (factorDepth / 2))));
-						pregrapha[i] -= pow(i / factorDepth, (it / (factorDepth * (factorDepth / 2))));
-					}
-
-				}
-			}
-			if (powcheckCloser(pregrapha, graph, sequence, factorDepth) == true && checkCloser(pregraphs, graph, sequence, factorDepth) == false
-				&& findInList(factors[ie], (it / (factorDepth * (factorDepth / 2)))) == false ) {
-				if (factors[ie].empty() || !(factors[ie].back() > 0)) {
-					for (int i = 0; i < graph.size(); i++) {
-						pregraphs[i] += 2 * pow(i / factorDepth, (it / (factorDepth * (factorDepth / 2))));
-						graph[i] += pow(i / factorDepth, (it / (factorDepth * (factorDepth / 2))));
-					}
-					factors[ie].push_back((it / (factorDepth * (factorDepth / 2))));
-				}
-				else {
-					for (int i = 0; i < graph.size(); i++) {
-						pregraphs[i] += pow(i / factorDepth, (it / (factorDepth * (factorDepth / 2))));
-						pregrapha[i] -= pow(i / factorDepth, (it / (factorDepth * (factorDepth / 2))));
-					}
-					
-				}
-				
-
-			}
-			if (powcheckCloser(pregrapha, graph, sequence, factorDepth) == false && checkCloser(pregraphs, graph, sequence, factorDepth) == false) {
-				for (int i = 0; i < graph.size(); i++) {
-					pregraphs[i] += pow(i / factorDepth, (it / (factorDepth * (factorDepth / 2))));
-					pregrapha[i] -= pow(i / factorDepth, (it / (factorDepth * (factorDepth / 2))));
-
-				}
-			}
-			if (powcheckCloser(pregrapha, graph, sequence, factorDepth) == true && checkCloser(pregraphs, graph, sequence, factorDepth) == true
-				&& findInList(factors[ie], (it / (factorDepth * (factorDepth / 2)))) == false) {
-				for (int i = 0; i < graph.size(); i++) {
-					if (checkCloser(pregrapha, pregraphs, sequence, factorDepth) == true && (factors[ie].empty() || !(factors[ie].back() > 0)) && findInList(factors[ie], (it / (factorDepth * (factorDepth / 2)))) == false) {
+				if (powcheckCloser(pregrapha, graph, sequence, factorDepth) == false && checkCloser(pregraphs, graph, sequence, factorDepth) == true
+					&& findInList(factors[ie], (it / (factorDepth * (factorDepth / 2)))) == false) {
+					if (factors[ie].empty() || !(factors[ie].back() < 0)) {
 						for (int i = 0; i < graph.size(); i++) {
-							pregraphs[i] += 2*pow(i / factorDepth, (it / (factorDepth * (factorDepth / 2))));
+							pregrapha[i] -= 2 * pow(i / factorDepth, (it / (factorDepth * (factorDepth / 2))));
 							graph[i] += pow(i / factorDepth, (it / (factorDepth * (factorDepth / 2))));
-
-						}
-						factors[ie].push_back((it / (factorDepth * (factorDepth / 2))));
-					}
-					if (checkCloser(pregraphs, pregrapha, sequence, factorDepth) == true && (factors[ie].empty() || !(factors[ie].back() < 0)) && findInList(factors[ie], (it / (factorDepth * (factorDepth / 2)))) == false) {
-						for (int i = 0; i < graph.size(); i++) {
-							pregrapha[i] -= 2* pow(i / factorDepth, (it / (factorDepth * (factorDepth / 2))));
-							graph[i] -= pow(i / factorDepth, (it / (factorDepth * (factorDepth / 2))));
-
 						}
 						factors[ie].push_back(-(it / (factorDepth * (factorDepth / 2))));
 					}
-				}
-			}
-		}
-		for (int it = 0; it < factorDepth * factorDepth; it++) {
-			for (int i = 0; i < graph.size() && findInList(factors[ie], (it / (factorDepth * (factorDepth / 2)))) == false; i++) {
+					else {
+						for (int i = 0; i < graph.size(); i++) {
+							pregraphs[i] += pow(i / factorDepth, (it / (factorDepth * (factorDepth / 2))));
+							pregrapha[i] -= pow(i / factorDepth, (it / (factorDepth * (factorDepth / 2))));
+						}
 
-				pregrapha[i] += pow(i / factorDepth, (it / (factorDepth * (factorDepth / 2))));
-				pregraphs[i] -= pow(i / factorDepth, (it / (factorDepth * (factorDepth / 2))));
-			}
-			if (powcheckCloser(pregrapha, graph, sequence, factorDepth) == false && checkCloser(pregraphs, graph, sequence, factorDepth) == true
-				&& findInList(factors[ie], (it / (factorDepth * (factorDepth / 2)))) == false) {
-				if (factors[ie].empty() || !(factors[ie].back() < 0)) {
-					for (int i = 0; i < graph.size(); i++) {
-						pregrapha[i] -= 2 * pow(i / factorDepth, (it / (factorDepth * (factorDepth / 2))));
-						graph[i] += pow(i / factorDepth, (it / (factorDepth * (factorDepth / 2))));
 					}
-					factors[ie].push_back(-(it / (factorDepth * (factorDepth / 2))));
 				}
-				else {
-					for (int i = 0; i < graph.size(); i++) {
-						pregraphs[i] += pow(i / factorDepth, (it / (factorDepth * (factorDepth / 2))));
-						pregrapha[i] -= pow(i / factorDepth, (it / (factorDepth * (factorDepth / 2))));
-					}
-
-				}
-			}
-			if (powcheckCloser(pregrapha, graph, sequence, factorDepth) == true && checkCloser(pregraphs, graph, sequence, factorDepth) == false
-				&& findInList(factors[ie], (it / (factorDepth * (factorDepth / 2)))) == false) {
-				if (factors[ie].empty() || !(factors[ie].back() > 0)) {
-					for (int i = 0; i < graph.size(); i++) {
-						pregraphs[i] += 2 * pow(i / factorDepth, (it / (factorDepth * (factorDepth / 2))));
-						graph[i] += pow(i / factorDepth, (it / (factorDepth * (factorDepth / 2))));
-					}
-					factors[ie].push_back((it / (factorDepth * (factorDepth / 2))));
-				}
-				else {
-					for (int i = 0; i < graph.size(); i++) {
-						pregraphs[i] += pow(i / factorDepth, (it / (factorDepth * (factorDepth / 2))));
-						pregrapha[i] -= pow(i / factorDepth, (it / (factorDepth * (factorDepth / 2))));
-					}
-
-				}
-
-
-			}
-			if (powcheckCloser(pregrapha, graph, sequence, factorDepth) == false && checkCloser(pregraphs, graph, sequence, factorDepth) == false) {
-				for (int i = 0; i < graph.size(); i++) {
-					pregraphs[i] += pow(i / factorDepth, (it / (factorDepth * (factorDepth / 2))));
-					pregrapha[i] -= pow(i / factorDepth, (it / (factorDepth * (factorDepth / 2))));
-
-				}
-			}
-			if (powcheckCloser(pregrapha, graph, sequence, factorDepth) == true && checkCloser(pregraphs, graph, sequence, factorDepth) == true
-				&& findInList(factors[ie], (it / (factorDepth * (factorDepth / 2)))) == false) {
-				for (int i = 0; i < graph.size(); i++) {
-					if (checkCloser(pregrapha, pregraphs, sequence, factorDepth) == true && (factors[ie].empty() || !(factors[ie].back() > 0)) && findInList(factors[ie], (it / (factorDepth * (factorDepth / 2)))) == false) {
+				if (powcheckCloser(pregrapha, graph, sequence, factorDepth) == true && checkCloser(pregraphs, graph, sequence, factorDepth) == false
+					&& findInList(factors[ie], (it / (factorDepth * (factorDepth / 2)))) == false) {
+					if (factors[ie].empty() || !(factors[ie].back() > 0)) {
 						for (int i = 0; i < graph.size(); i++) {
 							pregraphs[i] += 2 * pow(i / factorDepth, (it / (factorDepth * (factorDepth / 2))));
 							graph[i] += pow(i / factorDepth, (it / (factorDepth * (factorDepth / 2))));
-
 						}
 						factors[ie].push_back((it / (factorDepth * (factorDepth / 2))));
 					}
-					if (checkCloser(pregraphs, pregrapha, sequence, factorDepth) == true && (factors[ie].empty() || !(factors[ie].back() < 0)) && findInList(factors[ie], (it / (factorDepth * (factorDepth / 2)))) == false) {
+					else {
 						for (int i = 0; i < graph.size(); i++) {
-							pregrapha[i] -= 2 * pow(i / factorDepth, (it / (factorDepth * (factorDepth / 2))));
-							graph[i] -= pow(i / factorDepth, (it / (factorDepth * (factorDepth / 2))));
-
+							pregraphs[i] += pow(i / factorDepth, (it / (factorDepth * (factorDepth / 2))));
+							pregrapha[i] -= pow(i / factorDepth, (it / (factorDepth * (factorDepth / 2))));
 						}
-						factors[ie].push_back(-(it / (factorDepth * (factorDepth / 2))));
-					}
-				}
-			}
-		}
-		for (int it = 0; it < factorDepth * factorDepth; it++) {
-			for (int i = 0; i < graph.size() && findInList(factors[ie], (it / (factorDepth * (factorDepth / 2)))) == false; i++) {
 
-				pregrapha[i] += pow(i / factorDepth, (it / (factorDepth * (factorDepth / 2))));
-				pregraphs[i] -= pow(i / factorDepth, (it / (factorDepth * (factorDepth / 2))));
-			}
-			if (powcheckCloser(pregrapha, graph, sequence, factorDepth) == false && checkCloser(pregraphs, graph, sequence, factorDepth) == true
-				&& findInList(factors[ie], (it / (factorDepth * (factorDepth / 2)))) == false) {
-				if (factors[ie].empty() || !(factors[ie].back() < 0)) {
-					for (int i = 0; i < graph.size(); i++) {
-						pregrapha[i] -= 2 * pow(i / factorDepth, (it / (factorDepth * (factorDepth / 2))));
-						graph[i] += pow(i / factorDepth, (it / (factorDepth * (factorDepth / 2))));
 					}
-					factors[ie].push_back(-(it / (factorDepth * (factorDepth / 2))));
+
+
 				}
-				else {
+				if (powcheckCloser(pregrapha, graph, sequence, factorDepth) == false && checkCloser(pregraphs, graph, sequence, factorDepth) == false) {
 					for (int i = 0; i < graph.size(); i++) {
 						pregraphs[i] += pow(i / factorDepth, (it / (factorDepth * (factorDepth / 2))));
 						pregrapha[i] -= pow(i / factorDepth, (it / (factorDepth * (factorDepth / 2))));
-					}
 
+					}
 				}
-			}
-			if (powcheckCloser(pregrapha, graph, sequence, factorDepth) == true && checkCloser(pregraphs, graph, sequence, factorDepth) == false
-				&& findInList(factors[ie], (it / (factorDepth * (factorDepth / 2)))) == false) {
-				if (factors[ie].empty() || !(factors[ie].back() > 0)) {
+				if (powcheckCloser(pregrapha, graph, sequence, factorDepth) == true && checkCloser(pregraphs, graph, sequence, factorDepth) == true
+					&& findInList(factors[ie], (it / (factorDepth * (factorDepth / 2)))) == false) {
 					for (int i = 0; i < graph.size(); i++) {
-						pregraphs[i] += 2 * pow(i / factorDepth, (it / (factorDepth * (factorDepth / 2))));
-						graph[i] += pow(i / factorDepth, (it / (factorDepth * (factorDepth / 2))));
-					}
-					factors[ie].push_back((it / (factorDepth * (factorDepth / 2))));
-				}
-				else {
-					for (int i = 0; i < graph.size(); i++) {
-						pregraphs[i] += pow(i / factorDepth, (it / (factorDepth * (factorDepth / 2))));
-						pregrapha[i] -= pow(i / factorDepth, (it / (factorDepth * (factorDepth / 2))));
-					}
+						if (checkCloser(pregrapha, pregraphs, sequence, factorDepth) == true && (factors[ie].empty() || !(factors[ie].back() > 0)) && findInList(factors[ie], (it / (factorDepth * (factorDepth / 2)))) == false) {
+							for (int i = 0; i < graph.size(); i++) {
+								pregraphs[i] += 2 * pow(i / factorDepth, (it / (factorDepth * (factorDepth / 2))));
+								graph[i] += pow(i / factorDepth, (it / (factorDepth * (factorDepth / 2))));
 
-				}
-
-
-			}
-			if (powcheckCloser(pregrapha, graph, sequence, factorDepth) == false && checkCloser(pregraphs, graph, sequence, factorDepth) == false) {
-				for (int i = 0; i < graph.size(); i++) {
-					pregraphs[i] += pow(i / factorDepth, (it / (factorDepth * (factorDepth / 2))));
-					pregrapha[i] -= pow(i / factorDepth, (it / (factorDepth * (factorDepth / 2))));
-
-				}
-			}
-			if (powcheckCloser(pregrapha, graph, sequence, factorDepth) == true && checkCloser(pregraphs, graph, sequence, factorDepth) == true
-				&& findInList(factors[ie], (it / (factorDepth * (factorDepth / 2)))) == false) {
-				for (int i = 0; i < graph.size(); i++) {
-					if (checkCloser(pregrapha, pregraphs, sequence, factorDepth) == true && (factors[ie].empty() || !(factors[ie].back() > 0)) && findInList(factors[ie], (it / (factorDepth * (factorDepth / 2)))) == false) {
-						for (int i = 0; i < graph.size(); i++) {
-							pregraphs[i] += 2 * pow(i / factorDepth, (it / (factorDepth * (factorDepth / 2))));
-							graph[i] += pow(i / factorDepth, (it / (factorDepth * (factorDepth / 2))));
-
+							}
+							factors[ie].push_back((it / (factorDepth * (factorDepth / 2))));
 						}
-						factors[ie].push_back((it / (factorDepth * (factorDepth / 2))));
-					}
-					if (checkCloser(pregraphs, pregrapha, sequence, factorDepth) == true && (factors[ie].empty() || !(factors[ie].back() < 0)) && findInList(factors[ie], (it / (factorDepth * (factorDepth / 2)))) == false) {
-						for (int i = 0; i < graph.size(); i++) {
-							pregrapha[i] -= 2 * pow(i / factorDepth, (it / (factorDepth * (factorDepth / 2))));
-							graph[i] -= pow(i / factorDepth, (it / (factorDepth * (factorDepth / 2))));
+						if (checkCloser(pregraphs, pregrapha, sequence, factorDepth) == true && (factors[ie].empty() || !(factors[ie].back() < 0)) && findInList(factors[ie], (it / (factorDepth * (factorDepth / 2)))) == false) {
+							for (int i = 0; i < graph.size(); i++) {
+								pregrapha[i] -= 2 * pow(i / factorDepth, (it / (factorDepth * (factorDepth / 2))));
+								graph[i] -= pow(i / factorDepth, (it / (factorDepth * (factorDepth / 2))));
 
+							}
+							factors[ie].push_back(-(it / (factorDepth * (factorDepth / 2))));
 						}
-						factors[ie].push_back(-(it / (factorDepth * (factorDepth / 2))));
 					}
 				}
 			}
@@ -802,8 +532,10 @@ int main()
 		std::cin >> depth;
 		std::cout << "\n Processing depth: " << depth << ".";
 		std::cout << "\n And, for after the sequences are loaded:" <<
-			"\n Factorization hunt depth (number of factors to consider before rerouting (suggest minimum " << floor(depth*0.5) << ")) : ";
+			"\n Factorization hunt depth (number of factors to consider before rerouting (suggest " << round(depth*0.5) << ")) : ";
 		std::cin >> factorizationDepth;
+		std::cout<<"\n Cycle length: (even numbers greater than two, suggest " << round(pow(depth,.5)) << ")) : ";
+		std::cin >> cycles;
 		calcSeq(depth);
 
 

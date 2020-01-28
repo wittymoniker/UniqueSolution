@@ -185,12 +185,12 @@ bool checkCloser(std::vector<double>pregraph, std::vector<double>graph, std::vec
 	nearingAnswerVector[1].resize(0);
 	for (int ic = 0; ic < sequence.size(); ic++) {
 		if (abs(graph.at(sequence[ic] * factorDepth)) >= abs(pregraph.at(sequence[ic] * factorDepth))) {
-			for (int f = 0; f < (factorDepth*sequence[sequence.size()-1]/sequence.size())+factorDepth; f++) {
+			for (int f = 0; f < ((factorDepth*sequence[sequence.size()-1]/sequence.size())); f++) {
 				nearingAnswerVector[0].push_back(true);
 			}
 		}
 		if (abs(graph.at(sequence[ic] * factorDepth)) < abs(pregraph.at(sequence[ic] * factorDepth))) {
-			for (int f = 0; f < (factorDepth * sequence[sequence.size() - 1] / sequence.size())+factorDepth; f++) {
+			for (int f = 0; f < ((factorDepth * sequence[sequence.size() - 1] / sequence.size())); f++) {
 				nearingAnswerVector[1].push_back(true);
 			}
 		}
@@ -532,7 +532,7 @@ int main()
 		std::cin >> depth;
 		std::cout << "\n \n \n Processing depth: " << depth << ".";
 		std::cout << "\n And, for after the sequences are loaded:" <<
-			"\n Factorization hunt depth (number of factors to consider before rerouting (suggest minimum " << round(pow(depth,1.5)) << ")) : ";
+			"\n Factorization hunt depth (number of factors to consider before rerouting (suggest minimum " << depth << ")) : ";
 		std::cin >> factorizationDepth;
 		std::cout<<"\n Cycle length: (even numbers greater than two, suggest minimum " << round(pow(depth,.5)) << ")) : ";
 		std::cin >> cycles;

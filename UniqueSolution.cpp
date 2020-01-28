@@ -241,22 +241,22 @@ void modulaSeq(std::vector<std::vector<std::vector<double>>>seq, double factorDe
 			for (int it = 1; it < factorDepth * factorDepth; it++) {
 				for (int i = 0; i < graph.size() && findInList(frequencies[ik], (factorDepth / (it * factorDepth))) == false; i++) {
 
-					pregrapha[i] += cos((M_PI * i * 2 * factorDepth / (it * factorDepth)));
-					pregraphs[i] -= cos((M_PI * i * 2 * factorDepth / (it * factorDepth)));
+					pregrapha[i] += cos((M_PI * i *  factorDepth / (it * factorDepth)));
+					pregraphs[i] -= cos((M_PI * i *  factorDepth / (it * factorDepth)));
 				}
 				if (checkCloser(pregrapha, graph, sequence, factorDepth) == false && checkCloser(pregraphs, graph, sequence, factorDepth) == true
 					&& findInList(frequencies[ik], (factorDepth / (it * factorDepth))) == false) {
 					if ((frequencies[ik].empty() || !(frequencies[ik].back() < 0))) {
 						for (int i = 0; i < graph.size(); i++) {
-							pregrapha[i] -= 2 * cos((M_PI * i * 2 * factorDepth / (it * factorDepth)));
-							graph[i] -= cos((M_PI * i * 2 * factorDepth / (it * factorDepth)));
+							pregrapha[i] -= 2 * cos((M_PI * i * factorDepth / (it * factorDepth)));
+							graph[i] -= cos((M_PI * i * factorDepth / (it * factorDepth)));
 						}
 						frequencies[ik].push_back(-factorDepth / (it * factorDepth));
 					}
 					else {
 						for (int i = 0; i < graph.size(); i++) {
-							pregrapha[i] -= cos((M_PI * i * 2 * factorDepth / (it * factorDepth)));
-							pregraphs[i] += cos((M_PI * i * 2 * factorDepth / (it * factorDepth)));
+							pregrapha[i] -= cos((M_PI * i *  factorDepth / (it * factorDepth)));
+							pregraphs[i] += cos((M_PI * i *  factorDepth / (it * factorDepth)));
 						}
 					}
 
@@ -265,22 +265,22 @@ void modulaSeq(std::vector<std::vector<std::vector<double>>>seq, double factorDe
 					&& findInList(frequencies[ik], (factorDepth / (it * factorDepth))) == false) {
 					if ((frequencies[ik].empty() || !(frequencies[ik].back() > 0))) {
 						for (int i = 0; i < graph.size(); i++) {
-							pregrapha[i] -= 2 * cos((M_PI * i * 2 * factorDepth / (it * factorDepth)));
-							graph[i] -= cos((M_PI * i * 2 * factorDepth / (it * factorDepth)));
+							pregrapha[i] -= 2 * cos((M_PI * i *  factorDepth / (it * factorDepth)));
+							graph[i] -= cos((M_PI * i *  factorDepth / (it * factorDepth)));
 						}
 						frequencies[ik].push_back(factorDepth / (it * factorDepth));
 					}
 					else {
 						for (int i = 0; i < graph.size(); i++) {
-							pregrapha[i] -= cos((M_PI * i * 2 * factorDepth / (it * factorDepth)));
-							pregraphs[i] += cos((M_PI * i * 2 * factorDepth / (it * factorDepth)));
+							pregrapha[i] -= cos((M_PI * i *  factorDepth / (it * factorDepth)));
+							pregraphs[i] += cos((M_PI * i *  factorDepth / (it * factorDepth)));
 						}
 					}
 				}
 				if (checkCloser(pregrapha, graph, sequence, factorDepth) == false && checkCloser(pregraphs, graph, sequence, factorDepth) == false) {
 					for (int i = 0; i < graph.size(); i++) {
-						pregraphs[i] += cos((M_PI * i * 2 * factorDepth / (it * factorDepth)));
-						pregrapha[i] -= cos((M_PI * i * 2 * factorDepth / (it * factorDepth)));
+						pregraphs[i] += cos((M_PI * i * factorDepth / (it * factorDepth)));
+						pregrapha[i] -= cos((M_PI * i * factorDepth / (it * factorDepth)));
 
 					}
 				}
@@ -288,16 +288,16 @@ void modulaSeq(std::vector<std::vector<std::vector<double>>>seq, double factorDe
 					&& findInList(frequencies[ik], (factorDepth / it)) == false) {
 					if (checkCloser(pregrapha, pregraphs, sequence, factorDepth) == true && (frequencies[ik].empty() || !(frequencies[ik].back() > 0)) && findInList(frequencies[ik], (factorDepth / (it * factorDepth))) == false) {
 						for (int i = 0; i < graph.size(); i++) {
-							pregraphs[i] += 2 * cos((M_PI * i * 2 * factorDepth / (it * factorDepth)));
-							graph[i] += cos((M_PI * i * 2 * factorDepth / (it * factorDepth)));
+							pregraphs[i] += 2 * cos((M_PI * i* factorDepth / (it * factorDepth)));
+							graph[i] += cos((M_PI * i * factorDepth / (it * factorDepth)));
 
 						}
 						frequencies[ik].push_back(factorDepth / (it * factorDepth));
 					}
 					if (checkCloser(pregraphs, pregrapha, sequence, factorDepth) == true && (frequencies[ik].empty() || !(frequencies[ik].back() < 0)) && findInList(frequencies[ik], (factorDepth / (it * factorDepth))) == false) {
 						for (int i = 0; i < graph.size(); i++) {
-							pregrapha[i] -= 2 * cos((M_PI * i * 2 * factorDepth / (it * factorDepth)));
-							graph[i] -= cos((M_PI * i * 2 * factorDepth / (it * factorDepth)));
+							pregrapha[i] -= 2 * cos((M_PI * i * factorDepth / (it * factorDepth)));
+							graph[i] -= cos((M_PI * i * factorDepth / (it * factorDepth)));
 
 						}
 						frequencies[ik].push_back(-factorDepth / (it * factorDepth));

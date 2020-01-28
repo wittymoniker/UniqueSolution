@@ -184,13 +184,13 @@ bool checkCloser(std::vector<double>pregraph, std::vector<double>graph, std::vec
 	nearingAnswerVector[0].resize(0);
 	nearingAnswerVector[1].resize(0);
 	for (int ic = 0; ic < sequence.size(); ic++) {
-		if (abs(graph.at(sequence[ic] * factorDepth)) > abs(pregraph.at(sequence[ic] * factorDepth))) {
-			for (int f = 0; f < (factorDepth*sequence[sequence.size()-1]/sequence.size()+1); f++) {
+		if (abs(graph.at(sequence[ic] * factorDepth)) >= abs(pregraph.at(sequence[ic] * factorDepth))) {
+			for (int f = 0; f < (factorDepth*sequence[sequence.size()-1]/sequence.size())+factorDepth; f++) {
 				nearingAnswerVector[0].push_back(true);
 			}
 		}
-		if (abs(graph.at(sequence[ic] * factorDepth)) <= abs(pregraph.at(sequence[ic] * factorDepth))) {
-			for (int f = 0; f < (factorDepth * sequence[sequence.size() - 1] / sequence.size())+1; f++) {
+		if (abs(graph.at(sequence[ic] * factorDepth)) < abs(pregraph.at(sequence[ic] * factorDepth))) {
+			for (int f = 0; f < (factorDepth * sequence[sequence.size() - 1] / sequence.size())+factorDepth; f++) {
 				nearingAnswerVector[1].push_back(true);
 			}
 		}
@@ -345,12 +345,12 @@ bool powcheckCloser(std::vector<double>pregraph, std::vector<double>graph, std::
 	nearingAnswerVector[0].resize(0);
 	nearingAnswerVector[1].resize(0);
 	for (int im = 0; im < sequence.size(); im++) {
-		if (abs(graph.at(im*factorDepth)) - (sequence[im]) < abs(pregraph.at(im) * factorDepth - (sequence[im]))) {//oh, so maybe pregraph at sequence im -1?
+		if (abs(graph.at(im*factorDepth)) - (sequence[im]) <= abs(pregraph.at(im * factorDepth) - (sequence[im]))) {//oh, so maybe pregraph at sequence im -1?
 			for (int i = 0; i < factorDepth + 1; i++) {
 				nearingAnswerVector[1].push_back(true);
 			}
 		}
-		if (abs(graph.at(im * factorDepth)) - (sequence[im]) >= abs(pregraph.at(im) * factorDepth - (sequence[im]))) {
+		if (abs(graph.at(im * factorDepth)) - (sequence[im]) > abs(pregraph.at(im * factorDepth) - (sequence[im]))) {
 			for (int i = 0; i < factorDepth + 1; i++) {
 				nearingAnswerVector[0].push_back(true);
 			}

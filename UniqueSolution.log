@@ -130,6 +130,6 @@ C:\Users\noah\source\repos\UniqueSolution\UniqueSolution.cpp(501,20): warning C4
 C:\Users\noah\source\repos\UniqueSolution\UniqueSolution.cpp(505,20): warning C4018:  '<': signed/unsigned mismatch
 C:\Users\noah\source\repos\UniqueSolution\UniqueSolution.cpp(509,20): warning C4018:  '<': signed/unsigned mismatch
 C:\Users\noah\source\repos\UniqueSolution\UniqueSolution.cpp(513,20): warning C4018:  '<': signed/unsigned mismatch
-C:\Users\noah\source\repos\UniqueSolution\UniqueSolution.cpp(387): warning C4715:  'powcheckCloser': not all control paths return a value
 C:\Users\noah\source\repos\UniqueSolution\UniqueSolution.cpp(218): warning C4715:  'checkCloser': not all control paths return a value
+C:\Users\noah\source\repos\UniqueSolution\UniqueSolution.cpp(387): warning C4715:  'powcheckCloser': not all control paths return a value
   UniqueSolution.vcxproj -> C:\Users\noah\source\repos\UniqueSolution\Debug\UniqueSolution.exe

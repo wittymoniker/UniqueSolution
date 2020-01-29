@@ -185,12 +185,12 @@ bool checkCloser(std::vector<double>pregraph, std::vector<double>graph, std::vec
 	nearingAnswerVector[1].resize(0);
 	for (int ic = 0; ic < sequence.size(); ic++) {
 		if (abs(graph.at(sequence[ic] * factorDepth)) >= abs(pregraph.at(sequence[ic] * factorDepth))) {
-			for (int f = 0; f < ((factorDepth*sequence[sequence.size()-1]/sequence.size())); f++) {
+			for (int f = 0; f < ((factorDepth*sequence[sequence.size()-1]/(sequence.size()-1))); f++) {
 				nearingAnswerVector[0].push_back(true);
 			}
 		}
 		if (abs(graph.at(sequence[ic] * factorDepth)) < abs(pregraph.at(sequence[ic] * factorDepth))) {
-			for (int f = 0; f < ((factorDepth * sequence[sequence.size() - 1] / sequence.size())); f++) {
+			for (int f = 0; f < ((factorDepth * sequence[sequence.size() - 1] / (sequence.size() - 1))); f++) {
 				nearingAnswerVector[1].push_back(true);
 			}
 		}
@@ -199,10 +199,10 @@ bool checkCloser(std::vector<double>pregraph, std::vector<double>graph, std::vec
 
 	for (int ib = 0; ib < graph.size(); ib++) {//maybe seqsize-1
 		if (round(ib / factorDepth) != (ib / factorDepth)) {
-			if (abs(pregraph[ib]) > abs(graph[ib])) {
+			if (abs(pregraph[ib]) >= abs(graph[ib])) {
 				nearingAnswerVector[0].push_back(true);
 			}
-			if (abs(pregraph[ib]) <= abs(graph[ib])) {
+			if (abs(pregraph[ib]) < abs(graph[ib])) {
 				nearingAnswerVector[1].push_back(true);
 			}
 		}
@@ -238,11 +238,11 @@ void modulaSeq(std::vector<std::vector<std::vector<double>>>seq, double factorDe
 			sequence.push_back(seq[ik][it].size());
 		}
 		graph.resize(0);
-		graph.resize(factorDepth * (depth + 1));
-		pregrapha.resize(factorDepth * (depth + 1));
-		pregraphs.resize(factorDepth * (depth + 1));
+		graph.resize(factorDepth * (depth +1));
+		pregrapha.resize(factorDepth * (depth +1));
+		pregraphs.resize(factorDepth * (depth +1));
 		for (int z = 0; z < cycles; z++) {
-			for (int it = 1; it < factorDepth * factorDepth; it++) {
+			for (int it = 1; it < factorDepth * factorDepth; it++) {//potentially undo that...
 				for (int i = 0; i < graph.size() && findInList(frequencies[ik], (factorDepth / (it*factorDepth))) == false; i++) {
 
 					pregrapha[i] += cos((M_PI * i * (factorDepth / (it*factorDepth))));

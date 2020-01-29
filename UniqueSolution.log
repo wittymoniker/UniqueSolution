@@ -76,7 +76,8 @@ C:\Users\noah\source\repos\UniqueSolution\UniqueSolution.cpp(188,33): warning C4
 C:\Users\noah\source\repos\UniqueSolution\UniqueSolution.cpp(188,33): warning C4244:         [
 C:\Users\noah\source\repos\UniqueSolution\UniqueSolution.cpp(188,33): warning C4244:             _Ty=double
 C:\Users\noah\source\repos\UniqueSolution\UniqueSolution.cpp(188,33): warning C4244:         ]
-C:\Users\noah\source\repos\UniqueSolution\UniqueSolution.cpp(194,110): warning C4244:  'argument': conversion from 'double' to 'const unsigned int', possible loss of data
+C:\Users\noah\source\repos\UniqueSolution\UniqueSolution.cpp(194,107): warning C4244:  'argument': conversion from 'double' to 'const unsigned int', possible loss of data
+C:\Users\noah\source\repos\UniqueSolution\UniqueSolution.cpp(194,138): warning C4244:  'argument': conversion from 'double' to 'const unsigned int', possible loss of data
 C:\Users\noah\source\repos\UniqueSolution\UniqueSolution.cpp(200,33): warning C4244:  'argument': conversion from '_Ty' to 'const unsigned int', possible loss of data
 C:\Users\noah\source\repos\UniqueSolution\UniqueSolution.cpp(200,33): warning C4244:         with
 C:\Users\noah\source\repos\UniqueSolution\UniqueSolution.cpp(200,33): warning C4244:         [
@@ -92,7 +93,10 @@ C:\Users\noah\source\repos\UniqueSolution\UniqueSolution.cpp(201,30): warning C4
 C:\Users\noah\source\repos\UniqueSolution\UniqueSolution.cpp(201,30): warning C4244:         [
 C:\Users\noah\source\repos\UniqueSolution\UniqueSolution.cpp(201,30): warning C4244:             _Ty=double
 C:\Users\noah\source\repos\UniqueSolution\UniqueSolution.cpp(201,30): warning C4244:         ]
-C:\Users\noah\source\repos\UniqueSolution\UniqueSolution.cpp(202,110): warning C4244:  'argument': conversion from 'double' to 'const unsigned int', possible loss of data
+C:\Users\noah\source\repos\UniqueSolution\UniqueSolution.cpp(202,113): warning C4244:  'argument': conversion from 'double' to 'const unsigned int', possible loss of data
+C:\Users\noah\source\repos\UniqueSolution\UniqueSolution.cpp(202,144): warning C4244:  'argument': conversion from 'double' to 'const unsigned int', possible loss of data
+C:\Users\noah\source\repos\UniqueSolution\UniqueSolution.cpp(207,110): warning C4244:  'argument': conversion from 'double' to 'const unsigned int', possible loss of data
+C:\Users\noah\source\repos\UniqueSolution\UniqueSolution.cpp(207,144): warning C4244:  'argument': conversion from 'double' to 'const unsigned int', possible loss of data
 C:\Users\noah\source\repos\UniqueSolution\UniqueSolution.cpp(216,22): warning C4018:  '<': signed/unsigned mismatch
 C:\Users\noah\source\repos\UniqueSolution\UniqueSolution.cpp(264,23): warning C4018:  '<': signed/unsigned mismatch
 C:\Users\noah\source\repos\UniqueSolution\UniqueSolution.cpp(268,28): warning C4244:  'argument': conversion from 'double' to 'const unsigned int', possible loss of data

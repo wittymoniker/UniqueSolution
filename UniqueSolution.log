@@ -98,54 +98,54 @@ C:\Users\noah\source\repos\UniqueSolution\UniqueSolution.cpp(202,144): warning C
 C:\Users\noah\source\repos\UniqueSolution\UniqueSolution.cpp(207,110): warning C4244:  'argument': conversion from 'double' to 'const unsigned int', possible loss of data
 C:\Users\noah\source\repos\UniqueSolution\UniqueSolution.cpp(207,144): warning C4244:  'argument': conversion from 'double' to 'const unsigned int', possible loss of data
 C:\Users\noah\source\repos\UniqueSolution\UniqueSolution.cpp(216,22): warning C4018:  '<': signed/unsigned mismatch
-C:\Users\noah\source\repos\UniqueSolution\UniqueSolution.cpp(264,23): warning C4018:  '<': signed/unsigned mismatch
-C:\Users\noah\source\repos\UniqueSolution\UniqueSolution.cpp(268,28): warning C4244:  'argument': conversion from 'double' to 'const unsigned int', possible loss of data
-C:\Users\noah\source\repos\UniqueSolution\UniqueSolution.cpp(269,32): warning C4244:  'argument': conversion from 'double' to 'const unsigned int', possible loss of data
-C:\Users\noah\source\repos\UniqueSolution\UniqueSolution.cpp(270,32): warning C4244:  'argument': conversion from 'double' to 'const unsigned int', possible loss of data
-C:\Users\noah\source\repos\UniqueSolution\UniqueSolution.cpp(273,23): warning C4018:  '<': signed/unsigned mismatch
-C:\Users\noah\source\repos\UniqueSolution\UniqueSolution.cpp(281,25): warning C4018:  '<': signed/unsigned mismatch
-C:\Users\noah\source\repos\UniqueSolution\UniqueSolution.cpp(288,25): warning C4018:  '<': signed/unsigned mismatch
-C:\Users\noah\source\repos\UniqueSolution\UniqueSolution.cpp(298,25): warning C4018:  '<': signed/unsigned mismatch
-C:\Users\noah\source\repos\UniqueSolution\UniqueSolution.cpp(305,25): warning C4018:  '<': signed/unsigned mismatch
-C:\Users\noah\source\repos\UniqueSolution\UniqueSolution.cpp(312,24): warning C4018:  '<': signed/unsigned mismatch
-C:\Users\noah\source\repos\UniqueSolution\UniqueSolution.cpp(322,25): warning C4018:  '<': signed/unsigned mismatch
-C:\Users\noah\source\repos\UniqueSolution\UniqueSolution.cpp(331,25): warning C4018:  '<': signed/unsigned mismatch
-C:\Users\noah\source\repos\UniqueSolution\UniqueSolution.cpp(344,20): warning C4018:  '<': signed/unsigned mismatch
+C:\Users\noah\source\repos\UniqueSolution\UniqueSolution.cpp(266,23): warning C4018:  '<': signed/unsigned mismatch
+C:\Users\noah\source\repos\UniqueSolution\UniqueSolution.cpp(272,28): warning C4244:  'argument': conversion from 'double' to 'const unsigned int', possible loss of data
+C:\Users\noah\source\repos\UniqueSolution\UniqueSolution.cpp(273,32): warning C4244:  'argument': conversion from 'double' to 'const unsigned int', possible loss of data
+C:\Users\noah\source\repos\UniqueSolution\UniqueSolution.cpp(274,32): warning C4244:  'argument': conversion from 'double' to 'const unsigned int', possible loss of data
+C:\Users\noah\source\repos\UniqueSolution\UniqueSolution.cpp(277,23): warning C4018:  '<': signed/unsigned mismatch
+C:\Users\noah\source\repos\UniqueSolution\UniqueSolution.cpp(285,25): warning C4018:  '<': signed/unsigned mismatch
+C:\Users\noah\source\repos\UniqueSolution\UniqueSolution.cpp(292,25): warning C4018:  '<': signed/unsigned mismatch
+C:\Users\noah\source\repos\UniqueSolution\UniqueSolution.cpp(302,25): warning C4018:  '<': signed/unsigned mismatch
+C:\Users\noah\source\repos\UniqueSolution\UniqueSolution.cpp(309,25): warning C4018:  '<': signed/unsigned mismatch
+C:\Users\noah\source\repos\UniqueSolution\UniqueSolution.cpp(316,24): warning C4018:  '<': signed/unsigned mismatch
+C:\Users\noah\source\repos\UniqueSolution\UniqueSolution.cpp(326,25): warning C4018:  '<': signed/unsigned mismatch
+C:\Users\noah\source\repos\UniqueSolution\UniqueSolution.cpp(335,25): warning C4018:  '<': signed/unsigned mismatch
 C:\Users\noah\source\repos\UniqueSolution\UniqueSolution.cpp(348,20): warning C4018:  '<': signed/unsigned mismatch
 C:\Users\noah\source\repos\UniqueSolution\UniqueSolution.cpp(352,20): warning C4018:  '<': signed/unsigned mismatch
 C:\Users\noah\source\repos\UniqueSolution\UniqueSolution.cpp(356,20): warning C4018:  '<': signed/unsigned mismatch
 C:\Users\noah\source\repos\UniqueSolution\UniqueSolution.cpp(360,20): warning C4018:  '<': signed/unsigned mismatch
 C:\Users\noah\source\repos\UniqueSolution\UniqueSolution.cpp(364,20): warning C4018:  '<': signed/unsigned mismatch
-C:\Users\noah\source\repos\UniqueSolution\UniqueSolution.cpp(380,22): warning C4018:  '<': signed/unsigned mismatch
-C:\Users\noah\source\repos\UniqueSolution\UniqueSolution.cpp(381,22): warning C4244:  'argument': conversion from 'double' to 'const unsigned int', possible loss of data
-C:\Users\noah\source\repos\UniqueSolution\UniqueSolution.cpp(381,75): warning C4244:  'argument': conversion from 'double' to 'const unsigned int', possible loss of data
-C:\Users\noah\source\repos\UniqueSolution\UniqueSolution.cpp(386,23): warning C4244:  'argument': conversion from 'double' to 'const unsigned int', possible loss of data
-C:\Users\noah\source\repos\UniqueSolution\UniqueSolution.cpp(386,78): warning C4244:  'argument': conversion from 'double' to 'const unsigned int', possible loss of data
-C:\Users\noah\source\repos\UniqueSolution\UniqueSolution.cpp(393,22): warning C4018:  '<': signed/unsigned mismatch
-C:\Users\noah\source\repos\UniqueSolution\UniqueSolution.cpp(393,43): warning C4018:  '<': signed/unsigned mismatch
-C:\Users\noah\source\repos\UniqueSolution\UniqueSolution.cpp(395,41): warning C4244:  'argument': conversion from 'double' to 'const unsigned int', possible loss of data
-C:\Users\noah\source\repos\UniqueSolution\UniqueSolution.cpp(395,94): warning C4244:  'argument': conversion from 'double' to 'const unsigned int', possible loss of data
-C:\Users\noah\source\repos\UniqueSolution\UniqueSolution.cpp(398,41): warning C4244:  'argument': conversion from 'double' to 'const unsigned int', possible loss of data
-C:\Users\noah\source\repos\UniqueSolution\UniqueSolution.cpp(398,95): warning C4244:  'argument': conversion from 'double' to 'const unsigned int', possible loss of data
-C:\Users\noah\source\repos\UniqueSolution\UniqueSolution.cpp(434,23): warning C4018:  '<': signed/unsigned mismatch
-C:\Users\noah\source\repos\UniqueSolution\UniqueSolution.cpp(440,28): warning C4244:  'argument': conversion from 'double' to 'const unsigned int', possible loss of data
-C:\Users\noah\source\repos\UniqueSolution\UniqueSolution.cpp(441,32): warning C4244:  'argument': conversion from 'double' to 'const unsigned int', possible loss of data
-C:\Users\noah\source\repos\UniqueSolution\UniqueSolution.cpp(442,32): warning C4244:  'argument': conversion from 'double' to 'const unsigned int', possible loss of data
-C:\Users\noah\source\repos\UniqueSolution\UniqueSolution.cpp(445,23): warning C4018:  '<': signed/unsigned mismatch
-C:\Users\noah\source\repos\UniqueSolution\UniqueSolution.cpp(453,25): warning C4018:  '<': signed/unsigned mismatch
-C:\Users\noah\source\repos\UniqueSolution\UniqueSolution.cpp(460,25): warning C4018:  '<': signed/unsigned mismatch
-C:\Users\noah\source\repos\UniqueSolution\UniqueSolution.cpp(470,25): warning C4018:  '<': signed/unsigned mismatch
-C:\Users\noah\source\repos\UniqueSolution\UniqueSolution.cpp(477,25): warning C4018:  '<': signed/unsigned mismatch
-C:\Users\noah\source\repos\UniqueSolution\UniqueSolution.cpp(487,24): warning C4018:  '<': signed/unsigned mismatch
-C:\Users\noah\source\repos\UniqueSolution\UniqueSolution.cpp(495,24): warning C4018:  '<': signed/unsigned mismatch
-C:\Users\noah\source\repos\UniqueSolution\UniqueSolution.cpp(497,26): warning C4018:  '<': signed/unsigned mismatch
-C:\Users\noah\source\repos\UniqueSolution\UniqueSolution.cpp(505,26): warning C4018:  '<': signed/unsigned mismatch
-C:\Users\noah\source\repos\UniqueSolution\UniqueSolution.cpp(520,20): warning C4018:  '<': signed/unsigned mismatch
+C:\Users\noah\source\repos\UniqueSolution\UniqueSolution.cpp(368,20): warning C4018:  '<': signed/unsigned mismatch
+C:\Users\noah\source\repos\UniqueSolution\UniqueSolution.cpp(384,22): warning C4018:  '<': signed/unsigned mismatch
+C:\Users\noah\source\repos\UniqueSolution\UniqueSolution.cpp(385,22): warning C4244:  'argument': conversion from 'double' to 'const unsigned int', possible loss of data
+C:\Users\noah\source\repos\UniqueSolution\UniqueSolution.cpp(385,75): warning C4244:  'argument': conversion from 'double' to 'const unsigned int', possible loss of data
+C:\Users\noah\source\repos\UniqueSolution\UniqueSolution.cpp(390,23): warning C4244:  'argument': conversion from 'double' to 'const unsigned int', possible loss of data
+C:\Users\noah\source\repos\UniqueSolution\UniqueSolution.cpp(390,78): warning C4244:  'argument': conversion from 'double' to 'const unsigned int', possible loss of data
+C:\Users\noah\source\repos\UniqueSolution\UniqueSolution.cpp(397,22): warning C4018:  '<': signed/unsigned mismatch
+C:\Users\noah\source\repos\UniqueSolution\UniqueSolution.cpp(397,43): warning C4018:  '<': signed/unsigned mismatch
+C:\Users\noah\source\repos\UniqueSolution\UniqueSolution.cpp(399,41): warning C4244:  'argument': conversion from 'double' to 'const unsigned int', possible loss of data
+C:\Users\noah\source\repos\UniqueSolution\UniqueSolution.cpp(399,94): warning C4244:  'argument': conversion from 'double' to 'const unsigned int', possible loss of data
+C:\Users\noah\source\repos\UniqueSolution\UniqueSolution.cpp(402,41): warning C4244:  'argument': conversion from 'double' to 'const unsigned int', possible loss of data
+C:\Users\noah\source\repos\UniqueSolution\UniqueSolution.cpp(402,95): warning C4244:  'argument': conversion from 'double' to 'const unsigned int', possible loss of data
+C:\Users\noah\source\repos\UniqueSolution\UniqueSolution.cpp(438,23): warning C4018:  '<': signed/unsigned mismatch
+C:\Users\noah\source\repos\UniqueSolution\UniqueSolution.cpp(444,28): warning C4244:  'argument': conversion from 'double' to 'const unsigned int', possible loss of data
+C:\Users\noah\source\repos\UniqueSolution\UniqueSolution.cpp(445,32): warning C4244:  'argument': conversion from 'double' to 'const unsigned int', possible loss of data
+C:\Users\noah\source\repos\UniqueSolution\UniqueSolution.cpp(446,32): warning C4244:  'argument': conversion from 'double' to 'const unsigned int', possible loss of data
+C:\Users\noah\source\repos\UniqueSolution\UniqueSolution.cpp(449,23): warning C4018:  '<': signed/unsigned mismatch
+C:\Users\noah\source\repos\UniqueSolution\UniqueSolution.cpp(457,25): warning C4018:  '<': signed/unsigned mismatch
+C:\Users\noah\source\repos\UniqueSolution\UniqueSolution.cpp(464,25): warning C4018:  '<': signed/unsigned mismatch
+C:\Users\noah\source\repos\UniqueSolution\UniqueSolution.cpp(474,25): warning C4018:  '<': signed/unsigned mismatch
+C:\Users\noah\source\repos\UniqueSolution\UniqueSolution.cpp(481,25): warning C4018:  '<': signed/unsigned mismatch
+C:\Users\noah\source\repos\UniqueSolution\UniqueSolution.cpp(491,24): warning C4018:  '<': signed/unsigned mismatch
+C:\Users\noah\source\repos\UniqueSolution\UniqueSolution.cpp(499,24): warning C4018:  '<': signed/unsigned mismatch
+C:\Users\noah\source\repos\UniqueSolution\UniqueSolution.cpp(501,26): warning C4018:  '<': signed/unsigned mismatch
+C:\Users\noah\source\repos\UniqueSolution\UniqueSolution.cpp(509,26): warning C4018:  '<': signed/unsigned mismatch
 C:\Users\noah\source\repos\UniqueSolution\UniqueSolution.cpp(524,20): warning C4018:  '<': signed/unsigned mismatch
 C:\Users\noah\source\repos\UniqueSolution\UniqueSolution.cpp(528,20): warning C4018:  '<': signed/unsigned mismatch
 C:\Users\noah\source\repos\UniqueSolution\UniqueSolution.cpp(532,20): warning C4018:  '<': signed/unsigned mismatch
 C:\Users\noah\source\repos\UniqueSolution\UniqueSolution.cpp(536,20): warning C4018:  '<': signed/unsigned mismatch
 C:\Users\noah\source\repos\UniqueSolution\UniqueSolution.cpp(540,20): warning C4018:  '<': signed/unsigned mismatch
+C:\Users\noah\source\repos\UniqueSolution\UniqueSolution.cpp(544,20): warning C4018:  '<': signed/unsigned mismatch
 C:\Users\noah\source\repos\UniqueSolution\UniqueSolution.cpp(245): warning C4715:  'checkCloser': not all control paths return a value
-C:\Users\noah\source\repos\UniqueSolution\UniqueSolution.cpp(414): warning C4715:  'powcheckCloser': not all control paths return a value
+C:\Users\noah\source\repos\UniqueSolution\UniqueSolution.cpp(418): warning C4715:  'powcheckCloser': not all control paths return a value
   UniqueSolution.vcxproj -> C:\Users\noah\source\repos\UniqueSolution\Debug\UniqueSolution.exe

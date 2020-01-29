@@ -194,15 +194,19 @@ bool checkCloser(std::vector<double>pregraph, std::vector<double>graph, std::vec
 				nearingAnswerVector[1].push_back(true);
 			}
 		}
+
 	}
 
 	for (int ib = 0; ib < graph.size(); ib++) {//maybe seqsize-1
-		if (abs(pregraph[ib]) > abs(graph[ib])) {
-			nearingAnswerVector[0].push_back(true);
+		if (round(ib / factorDepth) != (ib / factorDepth)) {
+			if (abs(pregraph[ib]) > abs(graph[ib])) {
+				nearingAnswerVector[0].push_back(true);
+			}
+			if (abs(pregraph[ib]) <= abs(graph[ib])) {
+				nearingAnswerVector[1].push_back(true);
+			}
 		}
-		if (abs(pregraph[ib]) <= abs(graph[ib])) {
-			nearingAnswerVector[1].push_back(true);
-		}
+		
 	}
 	if (nearingAnswerVector[0].size() > nearingAnswerVector[1].size()) {
 		return true;

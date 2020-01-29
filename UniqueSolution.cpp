@@ -185,14 +185,30 @@ bool checkCloser(std::vector<double>pregraph, std::vector<double>graph, std::vec
 	nearingAnswerVector[1].resize(0);
 	for (int ic = 0; ic < sequence.size(); ic++) {
 		if (abs(graph.at(sequence[ic] * factorDepth)) >= abs(pregraph.at(sequence[ic] * factorDepth))) {
-			for (int f = 0; f < ((factorDepth*sequence[sequence.size()-1]/(sequence.size()-1))); f++) {
-				nearingAnswerVector[0].push_back(true);
+			if (pregraph.at(sequence[ic] * factorDepth) == 0) {
+				for (int f = 0; f < (factorDepth) * sequence[sequence.size()-1]/sequence.size(); f++) {
+					nearingAnswerVector[0].push_back(true);
+				}
 			}
+			else {
+				for (int f = 0; f < ((factorDepth)* sequence[sequence.size() - 1] / sequence.size())*(1- abs(pregraph[ic * factorDepth]));f++) {
+					nearingAnswerVector[0].push_back(true);
+				}
+			}
+			
 		}
 		if (abs(graph.at(sequence[ic] * factorDepth)) < abs(pregraph.at(sequence[ic] * factorDepth))) {
-			for (int f = 0; f < ((factorDepth * sequence[sequence.size() - 1] / (sequence.size() - 1))); f++) {
-				nearingAnswerVector[1].push_back(true);
+			if (graph.at(sequence[ic] * factorDepth) != 0) {
+				for (int f = 0; f < ((factorDepth)* sequence[sequence.size() - 1] / sequence.size()) * (1 + abs(graph[ic * factorDepth])); f++) {
+					nearingAnswerVector[1].push_back(true);
+				}
 			}
+			else {
+				for (int f = 0; f < (factorDepth)* sequence[sequence.size() - 1] / sequence.size(); f++) {
+					nearingAnswerVector[1].push_back(true);
+				}
+			}
+			
 		}
 
 	}
@@ -200,10 +216,21 @@ bool checkCloser(std::vector<double>pregraph, std::vector<double>graph, std::vec
 	for (int ib = 0; ib < graph.size(); ib++) {//maybe seqsize-1
 		if (round(ib / factorDepth) != (ib / factorDepth)) {
 			if (abs(pregraph[ib]) >= abs(graph[ib])) {
-				nearingAnswerVector[0].push_back(true);
+				for(int f=0;f<abs(pregraph[ib]);f++){
+					nearingAnswerVector[0].push_back(true);
+				}
 			}
 			if (abs(pregraph[ib]) < abs(graph[ib])) {
-				nearingAnswerVector[1].push_back(true);
+				if (pregraph[ib] != 0) {
+					for (int f = 0; f < graph[ib] / pregraph[ib]; f++) {
+						nearingAnswerVector[0].push_back(true);
+					}
+				}
+				else {
+					for (int f = 0; f < graph[ib]; f++) {
+						nearingAnswerVector[0].push_back(true);
+					}
+				}
 			}
 		}
 		

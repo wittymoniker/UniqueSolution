@@ -197,10 +197,10 @@ bool checkCloser(std::vector<double>pregraph, std::vector<double>graph, std::vec
 	}
 
 	for (int ib = 0; ib < graph.size(); ib++) {//maybe seqsize-1
-		if (abs(pregraph[ib]) >= abs(graph[ib])) {
+		if (abs(pregraph[ib]) > abs(graph[ib])) {
 			nearingAnswerVector[0].push_back(true);
 		}
-		if (abs(pregraph[ib]) < abs(graph[ib])) {
+		if (abs(pregraph[ib]) <= abs(graph[ib])) {
 			nearingAnswerVector[1].push_back(true);
 		}
 	}
@@ -265,8 +265,8 @@ void modulaSeq(std::vector<std::vector<std::vector<double>>>seq, double factorDe
 					&& findInList(frequencies[ik], (factorDepth / (it*factorDepth))) == false) {
 					if ((frequencies[ik].empty() || !(frequencies[ik].back() > 0))) {
 						for (int i = 0; i < graph.size(); i++) {
-							pregrapha[i] -= 2 * cos((M_PI * i * (factorDepth / (it*factorDepth))));
-							graph[i] -= cos((M_PI * i * (factorDepth / (it*factorDepth))));
+							pregraphs[i] += 2 * cos((M_PI * i * (factorDepth / (it*factorDepth))));
+							graph[i] += cos((M_PI * i * (factorDepth / (it*factorDepth))));
 						}
 						frequencies[ik].push_back((factorDepth / (it*factorDepth)));
 					}
@@ -286,7 +286,7 @@ void modulaSeq(std::vector<std::vector<std::vector<double>>>seq, double factorDe
 				}
 				if (checkCloser(pregrapha, graph, sequence, factorDepth) == true && checkCloser(pregraphs, graph, sequence, factorDepth) == true
 					&& findInList(frequencies[ik], (factorDepth / (it*factorDepth))) == false) {
-					if (checkCloser(pregrapha, pregraphs, sequence, factorDepth) == true && (frequencies[ik].empty() || !(frequencies[ik].back() > 0))
+					if ((frequencies[ik].empty() || !(frequencies[ik].back() > 0))
 						&& findInList(frequencies[ik], (factorDepth / (it*factorDepth))) == false) {
 						for (int i = 0; i < graph.size(); i++) {
 							pregraphs[i] += 2 * cos((M_PI * i* (factorDepth / (it*factorDepth))));
@@ -347,12 +347,12 @@ bool powcheckCloser(std::vector<double>pregraph, std::vector<double>graph, std::
 	nearingAnswerVector[0].resize(0);
 	nearingAnswerVector[1].resize(0);
 	for (int im = 0; im < sequence.size(); im++) {
-		if (abs(graph.at(im*factorDepth)) - (sequence[im]) <= abs(pregraph.at(im * factorDepth) - (sequence[im]))) {//oh, so maybe pregraph at sequence im -1?
+		if (abs(graph.at(im*factorDepth)) - (sequence[im]) < abs(pregraph.at(im * factorDepth) - (sequence[im]))) {//oh, so maybe pregraph at sequence im -1?
 			for (int i = 0; i < factorDepth + 1; i++) {
 				nearingAnswerVector[1].push_back(true);
 			}
 		}
-		if (abs(graph.at(im * factorDepth)) - (sequence[im]) > abs(pregraph.at(im * factorDepth) - (sequence[im]))) {
+		if (abs(graph.at(im * factorDepth)) - (sequence[im]) >= abs(pregraph.at(im * factorDepth) - (sequence[im]))) {
 			for (int i = 0; i < factorDepth + 1; i++) {
 				nearingAnswerVector[0].push_back(true);
 			}
@@ -361,21 +361,21 @@ bool powcheckCloser(std::vector<double>pregraph, std::vector<double>graph, std::
 
 	for (int iz = 0; iz < graph.size() && iz < pregraph.size(); iz++) {
 		if (round(iz / factorDepth) < sequence.size()-1) {
-			if (abs(pregraph[iz] - sequence[round(iz / factorDepth)]) <= abs(graph[iz] - sequence[round(iz / factorDepth)])) {
+			if (abs(pregraph[iz] - sequence[round(iz / factorDepth)]) < abs(graph[iz] - sequence[round(iz / factorDepth)])) {
 				nearingAnswerVector[0].push_back(true);
 			}
-			if (abs(pregraph[iz] - sequence[round(iz / factorDepth)]) > abs(graph[iz] - sequence[round(iz / factorDepth)])) {
+			if (abs(pregraph[iz] - sequence[round(iz / factorDepth)]) >= abs(graph[iz] - sequence[round(iz / factorDepth)])) {
 				nearingAnswerVector[1].push_back(true);
 			}
 		}
 
 	}
-	if (nearingAnswerVector[0].size() >= nearingAnswerVector[1].size()) {
+	if (nearingAnswerVector[0].size() > nearingAnswerVector[1].size()) {
 		//std::cout << "\n found a factor...";
 		return true;
 
 	}
-	if (nearingAnswerVector[0].size() < nearingAnswerVector[1].size()) {
+	if (nearingAnswerVector[0].size() <= nearingAnswerVector[1].size()) {
 		//std::cout << "\n did not find a factor...";
 		return false;
 	}

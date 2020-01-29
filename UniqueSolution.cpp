@@ -495,8 +495,8 @@ void modulaSeq(std::vector<std::vector<std::vector<double>>>seq, double factorDe
 					if ((frequencies[ik].empty() || !(frequencies[ik].back() > 0))
 						&& findInList(frequencies[ik], (factorDepth / (it * factorDepth))) == false) {
 						for (int i = 0; i < graph.size() && findInList(frequencies[ik], 1/(factorDepth / (it * factorDepth))) == false; i++) {
-							pregrapha[i] -= cos((M_PI * i * (1/factorDepth / (it * factorDepth))) / factorDepth);
-							pregraphs[i] += cos((M_PI * i * (1/((factorDepth / (it * factorDepth))) / factorDepth)));
+							pregrapha[i] -= cos((M_PI * i * (factorDepth / (it * factorDepth))) / factorDepth);
+							pregraphs[i] += cos((M_PI * i * (((factorDepth / (it * factorDepth))) / factorDepth)));
 							graph[i] += cos((M_PI * i * (1 / ((factorDepth / (it * factorDepth))) / factorDepth)));
 							invpregraphs[i] += 2 * cos((M_PI * i * (1 / ((factorDepth / (it * factorDepth))) / factorDepth)));
 							pregrapha[i] += cos((M_PI * i * (1 / ((factorDepth / (it * factorDepth))) / factorDepth)));
@@ -517,8 +517,8 @@ void modulaSeq(std::vector<std::vector<std::vector<double>>>seq, double factorDe
 					if ((frequencies[ik].empty() || !(frequencies[ik].back() < 0))
 						&& findInList(frequencies[ik], (factorDepth / (it * factorDepth))) == false) {
 						for (int i = 0; i < graph.size() && findInList(frequencies[ik], 1/(factorDepth / (it * factorDepth))) == false; i++) {
-							pregrapha[i] -= cos((M_PI * i * (1/factorDepth / (it * factorDepth))) / factorDepth);
-							pregraphs[i] += cos((M_PI * i * (1/((factorDepth / (it * factorDepth))) / factorDepth)));
+							pregrapha[i] -= cos((M_PI * i * (factorDepth / (it * factorDepth))) / factorDepth);
+							pregraphs[i] += cos((M_PI * i * (((factorDepth / (it * factorDepth))) / factorDepth)));
 							graph[i] -= cos((M_PI * i * (1 / ((factorDepth / (it * factorDepth))) / factorDepth)));
 							invpregrapha[i] -= 2 * cos((M_PI * i * (1 / ((factorDepth / (it * factorDepth))) / factorDepth)));
 							pregrapha[i] -= cos((M_PI * i * (1 / ((factorDepth / (it * factorDepth))) / factorDepth)));

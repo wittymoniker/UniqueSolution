@@ -88,7 +88,7 @@ C:\Users\noah\source\repos\UniqueSolution\UniqueSolution.cpp(208,81): warning C4
 C:\Users\noah\source\repos\UniqueSolution\UniqueSolution.cpp(208,81): warning C4244:         [
 C:\Users\noah\source\repos\UniqueSolution\UniqueSolution.cpp(208,81): warning C4244:             _Ty=double
 C:\Users\noah\source\repos\UniqueSolution\UniqueSolution.cpp(208,81): warning C4244:         ]
-C:\Users\noah\source\repos\UniqueSolution\UniqueSolution.cpp(209,115): warning C4244:  'argument': conversion from 'double' to 'const unsigned int', possible loss of data
+C:\Users\noah\source\repos\UniqueSolution\UniqueSolution.cpp(209,113): warning C4244:  'argument': conversion from 'double' to 'const unsigned int', possible loss of data
 C:\Users\noah\source\repos\UniqueSolution\UniqueSolution.cpp(216,33): warning C4244:  'argument': conversion from '_Ty' to 'const unsigned int', possible loss of data
 C:\Users\noah\source\repos\UniqueSolution\UniqueSolution.cpp(216,33): warning C4244:         with
 C:\Users\noah\source\repos\UniqueSolution\UniqueSolution.cpp(216,33): warning C4244:         [
@@ -116,7 +116,7 @@ C:\Users\noah\source\repos\UniqueSolution\UniqueSolution.cpp(229,81): warning C4
 C:\Users\noah\source\repos\UniqueSolution\UniqueSolution.cpp(229,81): warning C4244:         [
 C:\Users\noah\source\repos\UniqueSolution\UniqueSolution.cpp(229,81): warning C4244:             _Ty=double
 C:\Users\noah\source\repos\UniqueSolution\UniqueSolution.cpp(229,81): warning C4244:         ]
-C:\Users\noah\source\repos\UniqueSolution\UniqueSolution.cpp(230,117): warning C4244:  'argument': conversion from 'double' to 'const unsigned int', possible loss of data
+C:\Users\noah\source\repos\UniqueSolution\UniqueSolution.cpp(230,114): warning C4244:  'argument': conversion from 'double' to 'const unsigned int', possible loss of data
 C:\Users\noah\source\repos\UniqueSolution\UniqueSolution.cpp(237,33): warning C4244:  'argument': conversion from '_Ty' to 'const unsigned int', possible loss of data
 C:\Users\noah\source\repos\UniqueSolution\UniqueSolution.cpp(237,33): warning C4244:         with
 C:\Users\noah\source\repos\UniqueSolution\UniqueSolution.cpp(237,33): warning C4244:         [

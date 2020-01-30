@@ -413,7 +413,7 @@ void modulaSeq(std::vector<std::vector<std::vector<double>>>seq, double factorDe
 				}
 				switch (checkCloser(pregrapha, pregraphs, invpregrapha, invpregraphs, graph, sequence, factorDepth)) {
 				case 0:
-					if ((frequencies[ik].empty() || !(frequencies[ik].back() > 0)) && ((frequencies[ik].empty() || !(frequencies[ik].back() >= 1)))
+					if ((frequencies[ik].empty() || !(frequencies[ik].back() > 0)) && ((frequencies[ik].empty() || (frequencies[ik].back() <= -1)))
 						&& findInList(frequencies[ik], (factorDepth / (it * factorDepth))) == false) {
 						for (int i = 0; i < graph.size(); i++) {
 							pregraphs[i] += 2 * cos((M_PI * i * (factorDepth / (it * factorDepth))) / factorDepth);
@@ -434,7 +434,7 @@ void modulaSeq(std::vector<std::vector<std::vector<double>>>seq, double factorDe
 						}
 					}
 				case 1:
-					if ((frequencies[ik].empty() || !(frequencies[ik].back() < 0))&&((frequencies[ik].empty() || !(frequencies[ik].back() > -1)))
+					if ((frequencies[ik].empty() || !(frequencies[ik].back() < 0))&&((frequencies[ik].empty() ||  (frequencies[ik].back() >= 1)))
 						&& findInList(frequencies[ik], (factorDepth / (it * factorDepth))) == false) {
 						for (int i = 0; i < graph.size(); i++) {
 							pregrapha[i] -= 2 * cos((M_PI * i * (factorDepth / (it * factorDepth))) / factorDepth);
@@ -455,7 +455,7 @@ void modulaSeq(std::vector<std::vector<std::vector<double>>>seq, double factorDe
 						}
 					}
 				case 2:
-					if ((frequencies[ik].empty() || !(frequencies[ik].back() > 0)) && ((frequencies[ik].empty() || !(frequencies[ik].back() <= -1)))
+					if ((frequencies[ik].empty() || !(frequencies[ik].back() > 0)) && ((frequencies[ik].empty() || (frequencies[ik].back() >= -1)))
 						&& findInList(frequencies[ik], 1/(factorDepth / (it * factorDepth))) == false) {
 						for (int i = 0; i < graph.size(); i++) {
 							pregrapha[i] -= cos((M_PI * i * (factorDepth / (it * factorDepth))) / factorDepth);
@@ -477,7 +477,7 @@ void modulaSeq(std::vector<std::vector<std::vector<double>>>seq, double factorDe
 					}
 
 				case 3:
-					if ((frequencies[ik].empty() || !(frequencies[ik].back() < 0))&& ((frequencies[ik].empty() || !(frequencies[ik].back() <= -1)))
+					if ((frequencies[ik].empty() || !(frequencies[ik].back() < 0))&& ((frequencies[ik].empty() || (frequencies[ik].back() <= 1)))
 						&& findInList(frequencies[ik], 1/(factorDepth / (it * factorDepth))) == false) {
 						for (int i = 0; i < graph.size(); i++) {
 							pregrapha[i] -= cos((M_PI * i * (factorDepth / (it * factorDepth))) / factorDepth);

@@ -279,13 +279,13 @@ int checkCloser(std::vector<double>pregrapha, std::vector<double>pregraphs, std:
 	for (int ib = 0; ib < graph.size(); ib++) {//maybe seqsize-1
 		if (round(ib / factorDepth) != (ib / factorDepth)) {
 			if (abs(pregrapha[ib]) >= abs(graph[ib])) {
-				for(int f=0;f<abs(pregrapha[ib]*2);f++){
+				for(int f=0;f<abs(pregrapha[ib]-graph[ib])*2;f++){
 					nearingAnswerVector[0].push_back(true);
 				}
 			}
 			if (abs(pregrapha[ib]) < abs(graph[ib])) {
 				if (pregrapha[ib] != 0) {
-					for (int f = 0; f < abs((pregrapha[ib]*2)); f++) {
+					for (int f = 0; f < abs((pregrapha[ib] - graph[ib]) * 2); f++) {
 						nearingAnswerVector[1].push_back(true);
 					}
 				}
@@ -296,13 +296,13 @@ int checkCloser(std::vector<double>pregrapha, std::vector<double>pregraphs, std:
 				}
 			}
 			if (abs(pregraphs[ib]) >= abs(graph[ib])) {
-				for (int f = 0; f < abs(pregraphs[ib] * 2); f++) {
+				for (int f = 0; f < abs(pregraphs[ib] - graph[ib]) * 2; f++) {
 					nearingAnswerVector[2].push_back(true);
 				}
 			}
 			if (abs(pregraphs[ib]) < abs(graph[ib])) {
 				if (pregraphs[ib] != 0) {
-					for (int f = 0; f < abs((pregraphs[ib] * 2)); f++) {
+					for (int f = 0; f < abs((pregraphs[ib] - graph[ib]) * 2); f++) {
 						nearingAnswerVector[3].push_back(true);
 					}
 				}
@@ -313,13 +313,13 @@ int checkCloser(std::vector<double>pregrapha, std::vector<double>pregraphs, std:
 				}
 			}
 			if (abs(invpregrapha[ib]) >= abs(graph[ib])) {
-				for (int f = 0; f < abs(invpregrapha[ib] * 2); f++) {
+				for (int f = 0; f < abs(invpregrapha[ib] - graph[ib]) * 2; f++) {
 					nearingAnswerVector[4].push_back(true);
 				}
 			}
 			if (abs(invpregrapha[ib]) < abs(graph[ib])) {
 				if (invpregrapha[ib] != 0) {
-					for (int f = 0; f < abs(((invpregrapha[ib] * 2))); f++) {
+					for (int f = 0; f < abs((invpregrapha[ib] - graph[ib]) * 2); f++) {
 						nearingAnswerVector[5].push_back(true);
 					}
 				}
@@ -330,13 +330,13 @@ int checkCloser(std::vector<double>pregrapha, std::vector<double>pregraphs, std:
 				}
 			}
 			if (abs(invpregraphs[ib]) >= abs(graph[ib])) {
-				for (int f = 0; f < abs(invpregraphs[ib] * 2); f++) {
+				for (int f = 0; f < abs(invpregraphs[ib] - graph[ib]) * 2; f++) {
 					nearingAnswerVector[6].push_back(true);
 				}
 			}
 			if (abs(invpregraphs[ib]) < abs(graph[ib])) {
 				if (invpregraphs[ib] != 0) {
-					for (int f = 0; f < abs((invpregrapha[ib]) * 2); f++) {
+					for (int f = 0; f < abs((invpregraphs[ib] - graph[ib]) * 2); f++) {
 						nearingAnswerVector[7].push_back(true);
 					}
 				}

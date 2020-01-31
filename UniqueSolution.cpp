@@ -511,7 +511,7 @@ void fmmodulaSeq(std::vector<std::vector<std::vector<double>>>seq, double factor
 	std::vector<double>invpregraphs;
 	std::vector<std::vector<double>>frequencies;
 	frequencies.resize(0);
-	frequencies.resize(12);
+	frequencies.resize(6);
 	std::cout << "\n Searching for combinations of cosine frequency modulations to fit sequence. \n"<<
 		"Key: 1->roots 2->quotient 3->difference 4->addend 5->product 6->power";
 	for (int ik = 0; ik < 6; ik++) {

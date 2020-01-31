@@ -227,8 +227,8 @@ C:\Users\noah\source\repos\UniqueSolution\UniqueSolution.cpp(704,39): warning C4
 C:\Users\noah\source\repos\UniqueSolution\UniqueSolution.cpp(709,28): warning C4244:  'argument': conversion from 'double' to 'const unsigned __int64', possible loss of data
 C:\Users\noah\source\repos\UniqueSolution\UniqueSolution.cpp(710,32): warning C4244:  'argument': conversion from 'double' to 'const unsigned __int64', possible loss of data
 C:\Users\noah\source\repos\UniqueSolution\UniqueSolution.cpp(711,32): warning C4244:  'argument': conversion from 'double' to 'const unsigned __int64', possible loss of data
-C:\Users\noah\source\repos\UniqueSolution\UniqueSolution.cpp(738,73): warning C4805:  '==': unsafe mix of type 'int' and type 'bool' in operation
-C:\Users\noah\source\repos\UniqueSolution\UniqueSolution.cpp(758,73): warning C4805:  '==': unsafe mix of type 'int' and type 'bool' in operation
+C:\Users\noah\source\repos\UniqueSolution\UniqueSolution.cpp(738,72): warning C4805:  '==': unsafe mix of type 'int' and type 'bool' in operation
+C:\Users\noah\source\repos\UniqueSolution\UniqueSolution.cpp(755,73): warning C4805:  '==': unsafe mix of type 'int' and type 'bool' in operation
 C:\Users\noah\source\repos\UniqueSolution\UniqueSolution.cpp(377): warning C4715:  'checkCloser': not all control paths return a value
 C:\Users\noah\source\repos\UniqueSolution\UniqueSolution.cpp(682): warning C4715:  'powcheckCloser': not all control paths return a value
   UniqueSolution.vcxproj -> C:\Users\noah\source\repos\UniqueSolution\x64\Debug\UniqueSolution.exe

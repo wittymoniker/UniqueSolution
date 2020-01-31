@@ -12,7 +12,7 @@
 using namespace std;
 std::vector<std::vector<std::vector<double>>> uniqueValues(6);
 int cycles;
-bool sortasc(int i, int j) { return (i < j); }
+bool sortasc(double i, double j) { return (abs(i) < abs(j)); }
 void calcSeq(double depth) {
 	for (double it = 0; it < 6; it++) {
 		uniqueValues[it].resize(depth);
@@ -561,11 +561,11 @@ void fmmodulaSeq(std::vector<std::vector<std::vector<double>>>seq, double factor
 						//std::cout << (factorDepth / (it * factorDepth)) << ", ";
 					for (int i = 0; i < graph.size(); i++) {
 						pregraphs[i] += 2 * cos((M_PI * i * (factorDepth / (it * factorDepth))) / factorDepth);
-						graph[i] += cos((M_PI * i * (factorDepth / (it * factorDepth))) / factorDepth);
 						invpregrapha[i] -= cos((M_PI * i * ((it * factorDepth) / ((factorDepth))) / factorDepth));
 						invpregraphs[i] += cos((M_PI * i * ((it * factorDepth) / ((factorDepth))) / factorDepth));
 						invpregrapha[i] += cos((M_PI * i * (((factorDepth / (it * factorDepth))) / factorDepth)));
 						invpregraphs[i] += cos((M_PI * i * (((factorDepth / (it * factorDepth))) / factorDepth)));
+						graph[i] = cos((M_PI * i / factorDepth) * pregrapha[i]);
 					}
 					frequencies[ik].push_back((factorDepth / (it * factorDepth)));
 					break;
@@ -573,11 +573,11 @@ void fmmodulaSeq(std::vector<std::vector<std::vector<double>>>seq, double factor
 					//std::cout << "\nsubtracting to graph";
 					for (int i = 0; i < graph.size(); i++) {
 						pregrapha[i] -= 2 * cos((M_PI * i * (factorDepth / (it * factorDepth))) / factorDepth);
-						graph[i] -= cos((M_PI * i * (factorDepth / (it * factorDepth))) / factorDepth);
 						invpregrapha[i] -= cos((M_PI * i * ((it * factorDepth) / ((factorDepth))) / factorDepth));
 						invpregraphs[i] += cos((M_PI * i * ((it * factorDepth) / ((factorDepth))) / factorDepth));
 						invpregrapha[i] -= cos((M_PI * i * (((factorDepth / (it * factorDepth))) / factorDepth)));
 						invpregraphs[i] -= cos((M_PI * i * (((factorDepth / (it * factorDepth))) / factorDepth)));
+						graph[i] = cos((M_PI * i / factorDepth) * pregraphs[i]);
 					}
 					frequencies[ik].push_back(-(factorDepth / (it * factorDepth)));
 					break;
@@ -587,10 +587,10 @@ void fmmodulaSeq(std::vector<std::vector<std::vector<double>>>seq, double factor
 					for (int i = 0; i < graph.size(); i++) {
 						pregrapha[i] -= cos((M_PI * i * (factorDepth / (it * factorDepth))) / factorDepth);
 						pregraphs[i] += cos((M_PI * i * (((factorDepth / (it * factorDepth))) / factorDepth)));
-						graph[i] += cos((M_PI * i * ((it * factorDepth) / ((factorDepth / (it * factorDepth))) / factorDepth)));
 						invpregraphs[i] += 2 * cos((M_PI * i * ((it * factorDepth) / ((factorDepth))) / factorDepth));
 						pregrapha[i] += cos((M_PI * i * ((it * factorDepth) / ((factorDepth))) / factorDepth));
 						pregraphs[i] += cos((M_PI * i * ((it * factorDepth) / ((factorDepth))) / factorDepth));
+						graph[i] = cos((M_PI * i / factorDepth) * invpregrapha[i]);
 					}
 					frequencies[ik].push_back(((it * factorDepth) / ((factorDepth))));
 					break;
@@ -599,10 +599,10 @@ void fmmodulaSeq(std::vector<std::vector<std::vector<double>>>seq, double factor
 					for (int i = 0; i < graph.size(); i++) {
 						pregrapha[i] -= cos((M_PI * i * (factorDepth / (it * factorDepth))) / factorDepth);
 						pregraphs[i] += cos((M_PI * i * (((factorDepth / (it * factorDepth))) / factorDepth)));
-						graph[i] -= cos((M_PI * i * ((it * factorDepth) / ((factorDepth))) / factorDepth));
 						invpregrapha[i] -= 2 * cos((M_PI * i * ((it * factorDepth) / ((factorDepth))) / factorDepth));
 						pregrapha[i] -= cos((M_PI * i * ((it * factorDepth) / ((factorDepth))) / factorDepth));
 						pregraphs[i] -= cos((M_PI * i * ((it * factorDepth) / ((factorDepth))) / factorDepth));
+						graph[i] = cos((M_PI * i / factorDepth) * invpregraphs[i]);
 					}
 					frequencies[ik].push_back(-((it * factorDepth) / ((factorDepth))));
 					break;
@@ -820,12 +820,11 @@ int main()
 
 		
 
+		std::cout << "\n \n OK......  Cosine Frequency Modulations Solutions Solver run. \n";
+		fmmodulaSeq(uniqueValues, factorizationDepth);
 
 		std::cout << "\n \n OK......  Cosine Frequencies Solutions Solver run. \n";
 		modulaSeq(uniqueValues, factorizationDepth);
-
-		std::cout << "\n \n OK......  Cosine Frequency Modulations Solutions Solver run. \n";
-		fmmodulaSeq(uniqueValues, factorizationDepth);
 
 		std::cout << "\n \n OK......  X-Y Direct Curve Solutions Solver run. \n";
 		curveSeq(uniqueValues, factorizationDepth);

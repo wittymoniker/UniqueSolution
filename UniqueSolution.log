@@ -229,57 +229,6 @@ C:\Users\noah\source\repos\UniqueSolution\UniqueSolution.cpp(710,32): warning C4
 C:\Users\noah\source\repos\UniqueSolution\UniqueSolution.cpp(711,32): warning C4244:  'argument': conversion from 'double' to 'const unsigned __int64', possible loss of data
 C:\Users\noah\source\repos\UniqueSolution\UniqueSolution.cpp(738,73): warning C4805:  '==': unsafe mix of type 'int' and type 'bool' in operation
 C:\Users\noah\source\repos\UniqueSolution\UniqueSolution.cpp(758,73): warning C4805:  '==': unsafe mix of type 'int' and type 'bool' in operation
-C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\include\xutility(620,1): warning C4244:  'argument': conversion from 'double' to 'int', possible loss of data
-C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\include\xutility(619): message :  see reference to function template instantiation 'bool std::_Debug_lt_pred<bool(__cdecl *&)(int,int),double&,double&,0>(_Pr,_Ty1,_Ty2) noexcept(<expr>)' being compiled
-C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\include\xutility(619): message :         with
-C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\include\xutility(619): message :         [
-C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\include\xutility(619): message :             _Pr=bool (__cdecl *&)(int,int),
-C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\include\xutility(619): message :             _Ty1=double &,
-C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\include\xutility(619): message :             _Ty2=double &
-C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\include\xutility(619): message :         ]
-C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\include\algorithm(3454): message :  see reference to function template instantiation 'std::pair<_RanIt,_RanIt> std::_Partition_by_median_guess_unchecked<_RanIt,bool(__cdecl *)(int,int)>(_RanIt,_RanIt,_Pr)' being compiled
-C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\include\algorithm(3454): message :         with
-C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\include\algorithm(3454): message :         [
-C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\include\algorithm(3454): message :             _RanIt=double *,
-C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\include\algorithm(3454): message :             _Pr=bool (__cdecl *)(int,int)
-C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\include\algorithm(3454): message :         ]
-C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\include\algorithm(3480): message :  see reference to function template instantiation 'void std::_Sort_unchecked<double*,bool(__cdecl *)(int,int)>(_RanIt,_RanIt,__int64,_Pr)' being compiled
-C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\include\algorithm(3480): message :         with
-C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\include\algorithm(3480): message :         [
-C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\include\algorithm(3480): message :             _RanIt=double *,
-C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\include\algorithm(3480): message :             _Pr=bool (__cdecl *)(int,int)
-C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\include\algorithm(3480): message :         ]
-C:\Users\noah\source\repos\UniqueSolution\UniqueSolution.cpp(487): message :  see reference to function template instantiation 'void std::sort<std::_Vector_iterator<std::_Vector_val<std::_Simple_types<_Ty>>>,bool(__cdecl *)(int,int)>(const _RanIt,const _RanIt,_Pr)' being compiled
-C:\Users\noah\source\repos\UniqueSolution\UniqueSolution.cpp(487): message :         with
-C:\Users\noah\source\repos\UniqueSolution\UniqueSolution.cpp(487): message :         [
-C:\Users\noah\source\repos\UniqueSolution\UniqueSolution.cpp(487): message :             _Ty=double,
-C:\Users\noah\source\repos\UniqueSolution\UniqueSolution.cpp(487): message :             _RanIt=std::_Vector_iterator<std::_Vector_val<std::_Simple_types<double>>>,
-C:\Users\noah\source\repos\UniqueSolution\UniqueSolution.cpp(487): message :             _Pr=bool (__cdecl *)(int,int)
-C:\Users\noah\source\repos\UniqueSolution\UniqueSolution.cpp(487): message :         ]
-C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\include\algorithm(3390,101): warning C4244:  'argument': conversion from 'double' to 'int', possible loss of data
-C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\include\algorithm(3390,91): warning C4244:  'argument': conversion from 'double' to 'int', possible loss of data
-C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\include\algorithm(3394,92): warning C4244:  'argument': conversion from 'double' to 'int', possible loss of data
-C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\include\algorithm(3394,82): warning C4244:  'argument': conversion from 'double' to 'int', possible loss of data
-C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\include\algorithm(3404,40): warning C4244:  'argument': conversion from 'double' to 'int', possible loss of data
-C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\include\algorithm(3404,30): warning C4244:  'argument': conversion from 'double' to 'int', possible loss of data
-C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\include\algorithm(3416,40): warning C4244:  'argument': conversion from 'double' to 'int', possible loss of data
-C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\include\algorithm(3416,30): warning C4244:  'argument': conversion from 'double' to 'int', possible loss of data
-C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\include\xutility(622,57): warning C4244:  'argument': conversion from 'double' to 'int', possible loss of data
-C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\include\algorithm(3390): message :  see reference to function template instantiation 'bool std::_Debug_lt_pred<bool(__cdecl *&)(int,int),double&,double&,0>(_Pr,_Ty1,_Ty2) noexcept(false)' being compiled
-C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\include\algorithm(3390): message :         with
-C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\include\algorithm(3390): message :         [
-C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\include\algorithm(3390): message :             _Pr=bool (__cdecl *&)(int,int),
-C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\include\algorithm(3390): message :             _Ty1=double &,
-C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\include\algorithm(3390): message :             _Ty2=double &
-C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\include\algorithm(3390): message :         ]
-C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\include\algorithm(3454): message :  see reference to function template instantiation 'std::pair<_RanIt,_RanIt> std::_Partition_by_median_guess_unchecked<_RanIt,bool(__cdecl *)(int,int)>(_RanIt,_RanIt,_Pr)' being compiled
-C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\include\algorithm(3454): message :         with
-C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\include\algorithm(3454): message :         [
-C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\include\algorithm(3454): message :             _RanIt=double *,
-C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\include\algorithm(3454): message :             _Pr=bool (__cdecl *)(int,int)
-C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\include\algorithm(3454): message :         ]
-C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\include\xutility(622,50): warning C4244:  'argument': conversion from 'double' to 'int', possible loss of data
-C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\include\xutility(624,9): warning C4244:  'argument': conversion from 'double' to 'int', possible loss of data
 C:\Users\noah\source\repos\UniqueSolution\UniqueSolution.cpp(377): warning C4715:  'checkCloser': not all control paths return a value
 C:\Users\noah\source\repos\UniqueSolution\UniqueSolution.cpp(682): warning C4715:  'powcheckCloser': not all control paths return a value
   UniqueSolution.vcxproj -> C:\Users\noah\source\repos\UniqueSolution\x64\Debug\UniqueSolution.exe

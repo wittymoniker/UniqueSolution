@@ -12,6 +12,7 @@
 using namespace std;
 std::vector<std::vector<std::vector<double>>> uniqueValues(6);
 int cycles;
+bool inverses;
 bool sortasc(double i, double j) { return (abs(i) < abs(j)); }
 void calcSeq(double depth) {
 	for (double it = 0; it < 6; it++) {
@@ -161,27 +162,28 @@ void calcSeq(double depth) {
 	}
 	std::cout << "\n Powers sequence: \n";
 	for (int i = 0; i < depth; i++) {
-std::cout << uniqueValues[5][i].size() << ", ";
+		std::cout << uniqueValues[5][i].size() << ", ";
 	}//root,divide,subtract,add,multiply,pow
 }//root,divide,subtract,add,multiply,pow
 
 
-bool findInList(std::vector<double>list, double num) {
+
+int findInList(std::vector<double>list, double num) {
 	for (int m = 0; m < list.size(); m++) {
-		if (abs(list[m]) == abs(num)) {
+		if (abs(list[m]) == abs(num) && list[m] + num == 0) {
+			list.erase(list.begin() + m);
 			return true;
 		}
-
 	}
 	return false;
 }
 
 
 
-int checkCloser(std::vector<double>pregrapha, std::vector<double>pregraphs, std::vector<double>invpregrapha, 
+int checkCloser(std::vector<double>pregrapha, std::vector<double>pregraphs, std::vector<double>invpregrapha,
 	std::vector<double>invpregraphs, std::vector<double>graph, std::vector<double>sequence, double factorDepth) {
 
-	std::vector<std::vector<bool>>nearingAnswerVector(2);
+	std::vector<std::vector<bool>>nearingAnswerVector(8);
 	nearingAnswerVector.resize(0);
 	nearingAnswerVector.resize(8);
 	nearingAnswerVector[0].resize(0);
@@ -195,19 +197,19 @@ int checkCloser(std::vector<double>pregrapha, std::vector<double>pregraphs, std:
 	for (int ic = 0; ic < sequence.size(); ic++) {
 		if (abs(graph.at(sequence[ic] * factorDepth)) >= abs(pregrapha.at(sequence[ic] * factorDepth))) {
 			if (pregrapha.at(sequence[ic] * factorDepth) == 0) {
-				for (int f = 0; f < (((factorDepth)* sequence[sequence.size() - 1]) / (sequence.size())) * abs((graph[ic * factorDepth]) - ((pregrapha[ic * factorDepth]))); f++) {
+				for (int f = 0; f < (((factorDepth*2)* sequence[sequence.size() - 1]) / (sequence.size())) * abs((graph[ic * factorDepth]) - ((pregrapha[ic * factorDepth]))); f++) {
 					nearingAnswerVector[0].push_back(true);
 				}
 			}
 			else {
-				for (int f = 0; f < (((factorDepth)* sequence[sequence.size() - 1]) / (sequence.size()))*abs((graph[ic*factorDepth])- ((pregrapha[ic * factorDepth])));f++) {
+				for (int f = 0; f < (((factorDepth * 2)* sequence[sequence.size() - 1]) / (sequence.size())) * abs((graph[ic * factorDepth]) - ((pregrapha[ic * factorDepth]))); f++) {
 					nearingAnswerVector[0].push_back(true);
 				}
 			}
-			
+
 		}
-		if (abs(graph.at(sequence[ic] * factorDepth)) < abs(pregrapha.at(sequence[ic] * factorDepth))) {
-			for (int f = 0; f < (((factorDepth)* sequence[sequence.size() - 1]) / (sequence.size()))*abs((graph[ic*factorDepth])- ((pregrapha[ic * factorDepth]))); f++) {
+		if (abs(graph.at(sequence[ic] * factorDepth )) < abs(pregrapha.at(sequence[ic] * factorDepth))) {
+			for (int f = 0; f < (((factorDepth * 2)* sequence[sequence.size() - 1]) / (sequence.size())) * abs((graph[ic * factorDepth]) - ((pregrapha[ic * factorDepth]))); f++) {
 				nearingAnswerVector[1].push_back(true);
 			}
 		}
@@ -215,19 +217,19 @@ int checkCloser(std::vector<double>pregrapha, std::vector<double>pregraphs, std:
 
 		if (abs(graph.at(sequence[ic] * factorDepth)) >= abs(pregraphs.at(sequence[ic] * factorDepth))) {
 			if (pregraphs.at(sequence[ic] * factorDepth) == 0) {
-				for (int f = 0; f < (((factorDepth)* sequence[sequence.size() - 1]) / (sequence.size())) * abs((graph[ic * factorDepth]) - ((pregraphs[ic * factorDepth]))); f++) {
+				for (int f = 0; f < (((factorDepth * 2)* sequence[sequence.size() - 1]) / (sequence.size())) * abs((graph[ic * factorDepth]) - ((pregraphs[ic * factorDepth]))); f++) {
 					nearingAnswerVector[2].push_back(true);
 				}
 			}
 			else {
-				for (int f = 0; f < (((factorDepth)* sequence[sequence.size() - 1]) / (sequence.size())) * abs((graph[ic * factorDepth]) - ((pregraphs[ic * factorDepth]))); f++) {
+				for (int f = 0; f < (((factorDepth * 2)* sequence[sequence.size() - 1]) / (sequence.size())) * abs((graph[ic * factorDepth]) - ((pregraphs[ic * factorDepth]))); f++) {
 					nearingAnswerVector[2].push_back(true);
 				}
 			}
 
 		}
 		if (abs(graph.at(sequence[ic] * factorDepth)) < abs(pregraphs.at(sequence[ic] * factorDepth))) {
-			for (int f = 0; f < (((factorDepth)* sequence[sequence.size() - 1]) / (sequence.size())) * abs((graph[ic * factorDepth]) - ((pregraphs[ic * factorDepth]))); f++) {
+			for (int f = 0; f < (((factorDepth * 2)* sequence[sequence.size() - 1]) / (sequence.size())) * abs((graph[ic * factorDepth]) - ((pregraphs[ic * factorDepth]))); f++) {
 				nearingAnswerVector[3].push_back(true);
 			}
 		}
@@ -236,19 +238,19 @@ int checkCloser(std::vector<double>pregrapha, std::vector<double>pregraphs, std:
 
 		if (abs(graph.at(sequence[ic] * factorDepth)) >= abs(invpregrapha.at(sequence[ic] * factorDepth))) {
 			if (invpregrapha.at(sequence[ic] * factorDepth) == 0) {
-				for (int f = 0; f < (((factorDepth)* sequence[sequence.size() - 1]) / (sequence.size())) * abs(((graph[ic * factorDepth])) - ((invpregrapha[ic * factorDepth]))); f++) {
+				for (int f = 0; f < (((factorDepth * 2)* sequence[sequence.size() - 1]) / (sequence.size())) * abs(((graph[ic * factorDepth])) - ((invpregrapha[ic * factorDepth]))); f++) {
 					nearingAnswerVector[4].push_back(true);
 				}
 			}
 			else {
-				for (int f = 0; f < (((factorDepth)* sequence[sequence.size() - 1]) / (sequence.size())) * abs(((graph[ic * factorDepth])) - ((invpregrapha[ic * factorDepth]))); f++) {
+				for (int f = 0; f < (((factorDepth * 2)* sequence[sequence.size() - 1]) / (sequence.size())) * abs(((graph[ic * factorDepth])) - ((invpregrapha[ic * factorDepth]))); f++) {
 					nearingAnswerVector[4].push_back(true);
 				}
 			}
 
 		}
 		if (abs(graph.at(sequence[ic] * factorDepth)) < abs(invpregrapha.at(sequence[ic] * factorDepth))) {
-			for (int f = 0; f < (((factorDepth)* sequence[sequence.size() - 1]) / (sequence.size())) * abs(((graph[ic * factorDepth])) - ((invpregrapha[ic * factorDepth]))); f++) {
+			for (int f = 0; f < (((factorDepth * 2)* sequence[sequence.size() - 1]) / (sequence.size())) * abs(((graph[ic * factorDepth])) - ((invpregrapha[ic * factorDepth]))); f++) {
 				nearingAnswerVector[5].push_back(true);
 			}
 		}
@@ -256,19 +258,19 @@ int checkCloser(std::vector<double>pregrapha, std::vector<double>pregraphs, std:
 
 		if (abs(graph.at(sequence[ic] * factorDepth)) >= abs(invpregraphs.at(sequence[ic] * factorDepth))) {
 			if (invpregraphs.at(sequence[ic] * factorDepth) == 0) {
-				for (int f = 0; f < (((factorDepth)* sequence[sequence.size() - 1]) / (sequence.size())) * abs(((graph[ic * factorDepth])) - ((invpregraphs[ic * factorDepth]))); f++) {
+				for (int f = 0; f < (((factorDepth * 2)* sequence[sequence.size() - 1]) / (sequence.size())) * abs(((graph[ic * factorDepth])) - ((invpregraphs[ic * factorDepth]))); f++) {
 					nearingAnswerVector[6].push_back(true);
 				}
 			}
 			else {
-				for (int f = 0; f < (((factorDepth)* sequence[sequence.size() - 1]) / (sequence.size())) * abs(((graph[ic * factorDepth])) - ((invpregraphs[ic * factorDepth]))); f++) {
+				for (int f = 0; f < (((factorDepth * 2)* sequence[sequence.size() - 1]) / (sequence.size())) * abs(((graph[ic * factorDepth])) - ((invpregraphs[ic * factorDepth]))); f++) {
 					nearingAnswerVector[6].push_back(true);
 				}
 			}
 
 		}
 		if (abs(graph.at(sequence[ic] * factorDepth)) < abs(invpregraphs.at(sequence[ic] * factorDepth))) {
-			for (int f = 0; f < (((factorDepth)* sequence[sequence.size() - 1]) / (sequence.size())) * abs(((graph[ic * factorDepth])) - ((invpregraphs[ic * factorDepth]))); f++) {
+			for (int f = 0; f < (((factorDepth * 2)* sequence[sequence.size() - 1]) / (sequence.size())) * abs(((graph[ic * factorDepth])) - ((invpregraphs[ic * factorDepth]))); f++) {
 				nearingAnswerVector[7].push_back(true);
 			}
 
@@ -279,69 +281,69 @@ int checkCloser(std::vector<double>pregrapha, std::vector<double>pregraphs, std:
 	for (int ib = 0; ib < graph.size(); ib++) {//maybe seqsize-1
 		if (round(ib / factorDepth) != (ib / factorDepth)) {
 			if (abs(pregrapha[ib]) >= abs(graph[ib])) {
-				for(int f=0;f<abs(abs(pregrapha[ib])- abs(graph[ib]));f++){
+				for (int f = 0; f < abs(pregrapha[ib] - graph[ib]) * 2; f++) {
 					nearingAnswerVector[0].push_back(true);
 				}
 			}
 			if (abs(pregrapha[ib]) < abs(graph[ib])) {
 				if (pregrapha[ib] != 0) {
-					for (int f = 0; f < abs((pregrapha[ib] - graph[ib])); f++) {
+					for (int f = 0; f < abs((pregrapha[ib] - graph[ib])) * 2; f++) {
 						nearingAnswerVector[1].push_back(true);
 					}
 				}
 				else {
-					for (int f = 0; f < abs((pregrapha[ib] - graph[ib])); f++) {
+					for (int f = 0; f < abs((pregrapha[ib] - graph[ib])) * 2; f++) {
 						nearingAnswerVector[1].push_back(true);
 					}
 				}
 			}
 			if (abs(pregraphs[ib]) >= abs(graph[ib])) {
-				for (int f = 0; f < abs(pregraphs[ib] - graph[ib]) ; f++) {
+				for (int f = 0; f < abs(pregraphs[ib] - graph[ib]) * 2; f++) {
 					nearingAnswerVector[2].push_back(true);
 				}
 			}
 			if (abs(pregraphs[ib]) < abs(graph[ib])) {
 				if (pregraphs[ib] != 0) {
-					for (int f = 0; f < abs(((pregraphs[ib])) - (graph[ib])) ; f++) {
+					for (int f = 0; f < abs(((pregraphs[ib])) - (graph[ib])) * 2; f++) {
 						nearingAnswerVector[3].push_back(true);
 					}
 				}
 				else {
-					for (int f = 0; f < abs(((pregraphs[ib])) - (graph[ib])); f++) {
+					for (int f = 0; f < abs(((pregraphs[ib])) - (graph[ib])) * 2; f++) {
 						nearingAnswerVector[3].push_back(true);
 					}
 				}
 			}
 			if (abs(invpregrapha[ib]) >= abs(graph[ib])) {
-				for (int f = 0; f < abs((invpregrapha[ib]) - (graph[ib])) ; f++) {
+				for (int f = 0; f < abs((invpregrapha[ib]) - (graph[ib])) * 2; f++) {
 					nearingAnswerVector[4].push_back(true);
 				}
 			}
 			if (abs(invpregrapha[ib]) < abs(graph[ib])) {
 				if (invpregrapha[ib] != 0) {
-					for (int f = 0; f < abs(((invpregrapha[ib])) - (graph[ib])) ; f++) {
+					for (int f = 0; f < abs(((invpregrapha[ib])) - (graph[ib])) * 2; f++) {
 						nearingAnswerVector[5].push_back(true);
 					}
 				}
 				else {
-					for (int f = 0; f < abs((invpregrapha[ib]) - (graph[ib])); f++) {
+					for (int f = 0; f < abs((invpregrapha[ib]) - (graph[ib])) * 2; f++) {
 						nearingAnswerVector[5].push_back(true);
 					}
 				}
 			}
 			if (abs(invpregraphs[ib]) >= abs(graph[ib])) {
-				for (int f = 0; f < abs((invpregraphs[ib]) - (graph[ib])) ; f++) {
+				for (int f = 0; f < abs((invpregraphs[ib]) - (graph[ib])) * 2; f++) {
 					nearingAnswerVector[6].push_back(true);
 				}
 			}
 			if (abs(invpregraphs[ib]) < abs(graph[ib])) {
 				if (invpregraphs[ib] != 0) {
-					for (int f = 0; f < abs(((invpregraphs[ib])) - (graph[ib])) ; f++) {
+					for (int f = 0; f < abs(((invpregraphs[ib])) - (graph[ib])) * 2; f++) {
 						nearingAnswerVector[7].push_back(true);
 					}
 				}
 				else {
-					for (int f = 0; f < abs((invpregraphs[ib]) - (graph[ib])); f++) {
+					for (int f = 0; f < abs((invpregraphs[ib]) - (graph[ib])) * 2; f++) {
 						nearingAnswerVector[7].push_back(true);
 					}
 				}
@@ -354,26 +356,26 @@ int checkCloser(std::vector<double>pregrapha, std::vector<double>pregraphs, std:
 	getHigh.resize(0);
 	getHigh.resize(4);
 	for (int f = 0; f < 4; f++) {
-		getHigh[f] = nearingAnswerVector[2.0 * f].size() - nearingAnswerVector[(2.0 * f) + 1].size();
+		getHigh[f] = nearingAnswerVector[2.0 * f].size() - ((double)nearingAnswerVector[(2.0 * f) + 1].size());
+		//cout << getHigh[f] << ", ";
 	}
 	for (int f = 0; f < 4; f++) {
 		if (getHigh[f] > highest) {
 			highest = getHigh[f];
 		}
 	}
+	
 	for (int f = 0; f < 4; f++) {
-		if (getHigh[f] == highest ) {
-			if (highest > 0) {
+		if (getHigh[f] == highest) {
+			if (highest >= 0) {
 				return f;
-				break;
 			}
-			break;
 		}
 	}
-	if (highest < 1) {
+	if (highest < 0) {
 		return 4;
 	}
-
+	return 4;
 }
 
 
@@ -390,10 +392,10 @@ void modulaSeq(std::vector<std::vector<std::vector<double>>>seq, double factorDe
 
 	frequencies.resize(0);
 	frequencies.resize(6);
-	std::cout << "\n Searching for combinations of cosine modulations to fit sequence, scanning range "<<cycles<<" times for patterning. \n"<<
+	std::cout << "\n Searching for combinations of cosine modulations to fit sequence, scanning range " << cycles << " times for patterning. \n" <<
 		"Key: 1->roots 2->quotient 3->difference 4->addend 5->product 6->power";
 	for (int ik = 0; ik < 6; ik++) {
-		std::cout << "\n " << ik+1 << " Set processing cosines... \n";
+		std::cout << "\n " << ik + 1 << " Set processing cosines... \n";
 		sequence.resize(0);
 		depth = seq[ik][seq[ik].size() - 1].size();
 		for (int it = 0; it < seq[ik].size(); it++) {
@@ -404,18 +406,23 @@ void modulaSeq(std::vector<std::vector<std::vector<double>>>seq, double factorDe
 		pregraphs.resize(0);
 		invpregrapha.resize(0);
 		invpregraphs.resize(0);
-		graph.resize(factorDepth * (depth +1));
-		pregrapha.resize(factorDepth * (depth +1));
-		pregraphs.resize(factorDepth * (depth +1));
+		graph.resize(factorDepth * (depth + 1));
+		pregrapha.resize(factorDepth * (depth + 1));
+		pregraphs.resize(factorDepth * (depth + 1));
 		invpregrapha.resize(factorDepth * (depth + 1));
 		invpregraphs.resize(factorDepth * (depth + 1));
+		
+		
 		for (int z = 0; z < cycles; z++) {
-			for (double it = 1; it < factorDepth; it++) {//potentially undo that...
+			for (double it = 1; it < factorDepth*factorDepth; it++) {//potentially undo that...
 				//std::cout << "\nchecking case for desired value";
 				for (int i = 0; i < graph.size(); i++) {
 					pregrapha[i] += cos((M_PI * i * ((factorDepth / (it * factorDepth))) / factorDepth));
-					invpregrapha[i] += cos((M_PI * i * ((it*factorDepth) / ((factorDepth))) / factorDepth));
-					invpregraphs[i] -= cos((M_PI * i * ((it*factorDepth) / ((factorDepth))) / factorDepth));
+					if (inverses) {
+						invpregrapha[i] += cos((M_PI * i * ((it * factorDepth) / ((factorDepth))) / factorDepth));
+						invpregraphs[i] -= cos((M_PI * i * ((it * factorDepth) / ((factorDepth))) / factorDepth));
+					}
+					
 					pregraphs[i] -= cos((M_PI * i * (((factorDepth / (it * factorDepth))) / factorDepth)));
 				}
 				switch (checkCloser(pregrapha, pregraphs, invpregrapha, invpregraphs, graph, sequence, factorDepth)) {
@@ -423,46 +430,62 @@ void modulaSeq(std::vector<std::vector<std::vector<double>>>seq, double factorDe
 					for (int i = 0; i < graph.size(); i++) {
 						pregraphs[i] += 2 * cos((M_PI * i * (factorDepth / (it * factorDepth))) / factorDepth);
 						graph[i] += cos((M_PI * i * (factorDepth / (it * factorDepth))) / factorDepth);
-						invpregrapha[i] -= cos((M_PI * i * ((it*factorDepth) / ((factorDepth))) / factorDepth));
-						invpregraphs[i] += cos((M_PI * i * ((it*factorDepth) / ((factorDepth))) / factorDepth));
+						if (inverses) {
+							invpregrapha[i] -= cos((M_PI * i * ((it * factorDepth) / ((factorDepth))) / factorDepth));
+							invpregraphs[i] += cos((M_PI * i * ((it * factorDepth) / ((factorDepth))) / factorDepth));
+						}
+						
 						invpregrapha[i] += cos((M_PI * i * (((factorDepth / (it * factorDepth))) / factorDepth)));
 						invpregraphs[i] += cos((M_PI * i * (((factorDepth / (it * factorDepth))) / factorDepth)));
 					}
-					frequencies[ik].push_back((factorDepth / (it * factorDepth)));
-					break;
+					if (findInList(frequencies[ik], (factorDepth / (it * factorDepth))) == false) {
+						frequencies[ik].push_back((factorDepth / (it * factorDepth)));
+					}
 				case 1:
 					for (int i = 0; i < graph.size(); i++) {
 						pregrapha[i] -= 2 * cos((M_PI * i * (factorDepth / (it * factorDepth))) / factorDepth);
 						graph[i] -= cos((M_PI * i * (factorDepth / (it * factorDepth))) / factorDepth);
-						invpregrapha[i] -= cos((M_PI * i * ((it*factorDepth) / ((factorDepth))) / factorDepth));
-						invpregraphs[i] += cos((M_PI * i * ((it*factorDepth) / ((factorDepth))) / factorDepth));
+						if (inverses) {
+							invpregrapha[i] -= cos((M_PI * i * ((it * factorDepth) / ((factorDepth))) / factorDepth));
+							invpregraphs[i] += cos((M_PI * i * ((it * factorDepth) / ((factorDepth))) / factorDepth));
+						}
+					
 						invpregrapha[i] -= cos((M_PI * i * (((factorDepth / (it * factorDepth))) / factorDepth)));
 						invpregraphs[i] -= cos((M_PI * i * (((factorDepth / (it * factorDepth))) / factorDepth)));
 					}
-					frequencies[ik].push_back(-(factorDepth / (it * factorDepth)));
-					break;
+					if (findInList(frequencies[ik], -(factorDepth / (it * factorDepth))) == false) {
+						frequencies[ik].push_back(-(factorDepth / (it * factorDepth)));
+					}
 				case 2:
-					for (int i = 0; i < graph.size(); i++) {
-						pregrapha[i] -= cos((M_PI * i * (factorDepth / (it * factorDepth))) / factorDepth);
-						pregraphs[i] += cos((M_PI * i * (((factorDepth / (it * factorDepth))) / factorDepth)));
-						graph[i] += cos((M_PI * i * ((it*factorDepth) / ((factorDepth / (it * factorDepth))) / factorDepth)));
-						invpregraphs[i] += 2 * cos((M_PI * i * ((it*factorDepth) / ((factorDepth))) / factorDepth));
-						pregrapha[i] += cos((M_PI * i * ((it*factorDepth) / ((factorDepth))) / factorDepth));
-						pregraphs[i] += cos((M_PI * i * ((it*factorDepth) / ((factorDepth))) / factorDepth));
+					if (inverses) {
+						for (int i = 0; i < graph.size(); i++) {
+							pregrapha[i] -= cos((M_PI * i * (factorDepth / (it * factorDepth))) / factorDepth);
+							pregraphs[i] += cos((M_PI * i * (((factorDepth / (it * factorDepth))) / factorDepth)));
+							graph[i] += cos((M_PI * i * ((it * factorDepth) / ((factorDepth / (it * factorDepth))) / factorDepth)));
+							invpregraphs[i] += 2 * cos((M_PI * i * ((it * factorDepth) / ((factorDepth))) / factorDepth));
+							pregrapha[i] += cos((M_PI * i * ((it * factorDepth) / ((factorDepth))) / factorDepth));
+							pregraphs[i] += cos((M_PI * i * ((it * factorDepth) / ((factorDepth))) / factorDepth));
+						}
+						if (findInList(frequencies[ik], (it * factorDepth / (factorDepth))) == false) {
+							frequencies[ik].push_back((it * factorDepth / (factorDepth)));
+						}
 					}
-					frequencies[ik].push_back(((it* factorDepth) / ((factorDepth))));
-					break;
+					
 				case 3:
-					for (int i = 0; i < graph.size(); i++) {
-						pregrapha[i] -= cos((M_PI * i * (factorDepth / (it * factorDepth))) / factorDepth);
-						pregraphs[i] += cos((M_PI * i * (((factorDepth / (it * factorDepth))) / factorDepth)));
-						graph[i] -= cos((M_PI * i * ((it*factorDepth) / ((factorDepth))) / factorDepth));
-						invpregrapha[i] -= 2 * cos((M_PI * i * ((it*factorDepth) / ((factorDepth))) / factorDepth));
-						pregrapha[i] -= cos((M_PI * i * ((it*factorDepth) / ((factorDepth))) / factorDepth));
-						pregraphs[i] -= cos((M_PI * i * ((it*factorDepth) / ((factorDepth))) / factorDepth));
+					if (inverses) {
+						for (int i = 0; i < graph.size(); i++) {
+							pregrapha[i] -= cos((M_PI * i * (factorDepth / (it * factorDepth))) / factorDepth);
+							pregraphs[i] += cos((M_PI * i * (((factorDepth / (it * factorDepth))) / factorDepth)));
+							graph[i] -= cos((M_PI * i * ((it * factorDepth) / ((factorDepth))) / factorDepth));
+							invpregrapha[i] -= 2 * cos((M_PI * i * ((it * factorDepth) / ((factorDepth))) / factorDepth));
+							pregrapha[i] -= cos((M_PI * i * ((it * factorDepth) / ((factorDepth))) / factorDepth));
+							pregraphs[i] -= cos((M_PI * i * ((it * factorDepth) / ((factorDepth))) / factorDepth));
+						}
+						if (findInList(frequencies[ik], -(it * factorDepth / (factorDepth))) == false) {
+							frequencies[ik].push_back(-(it * factorDepth / (factorDepth)));
+						}
 					}
-					frequencies[ik].push_back(-((it * factorDepth) / ((factorDepth))));
-					break;
+					
 
 				case 4:
 					//std::cout << "\nno good value";
@@ -470,11 +493,13 @@ void modulaSeq(std::vector<std::vector<std::vector<double>>>seq, double factorDe
 						for (int i = 0; i < graph.size(); i++) {
 							pregraphs[i] += cos((M_PI * i * (factorDepth / (it * factorDepth))) / factorDepth);
 							pregrapha[i] -= cos((M_PI * i * (factorDepth / (it * factorDepth))) / factorDepth);
-							invpregrapha[i] -= cos((M_PI * i * ((it*factorDepth) / ((factorDepth))) / factorDepth));
-							invpregraphs[i] += cos((M_PI * i * ((it*factorDepth) / ((factorDepth))) / factorDepth));
+							if (inverses) {
+								invpregrapha[i] -= cos((M_PI * i * ((it * factorDepth) / ((factorDepth))) / factorDepth));
+								invpregraphs[i] += cos((M_PI * i * ((it * factorDepth) / ((factorDepth))) / factorDepth));
+							}
+							
 						}
 					}
-					break;
 				}
 			}
 		}
@@ -482,15 +507,15 @@ void modulaSeq(std::vector<std::vector<std::vector<double>>>seq, double factorDe
 
 	std::cout << "\n \n \n Done sequencing complex frequencies for sequence approximation. Sequence of frequencies (depth " << factorDepth << "). \n\n\n"
 		"Data retrieved: \n";
-	
+
 	for (int i = 0; i < frequencies.size(); i++) {
 		sort(frequencies[i].begin(), frequencies[i].end(), sortasc);
 		std::cout << "\n " << i + 1 << " Set processing cosines, values found: \n";
 		for (int it = 0; it < frequencies[i].size(); it++) {
-			std::cout << frequencies[i][it]<<", ";
+			std::cout << frequencies[i][it] << ", ";
 
 		}
-		
+
 
 	}
 
@@ -512,10 +537,10 @@ void fmmodulaSeq(std::vector<std::vector<std::vector<double>>>seq, double factor
 	std::vector<std::vector<double>>frequencies;
 	frequencies.resize(0);
 	frequencies.resize(6);
-	std::cout << "\n Searching for combinations of cosine frequency modulations to fit sequence. \n"<<
+	std::cout << "\n Searching for combinations of cosine frequency modulations to fit sequence. \n" <<
 		"Key: 1->roots 2->quotient 3->difference 4->addend 5->product 6->power";
 	for (int ik = 0; ik < 6; ik++) {
-		std::cout << "\n " << ik+1 << "Set processing cosines... \n";
+		std::cout << "\n " << ik + 1 << "Set processing cosines... \n";
 		sequence.resize(0);
 		depth = seq[ik][seq[ik].size() - 1].size();
 		for (int it = 0; it < seq[ik].size(); it++) {
@@ -540,19 +565,23 @@ void fmmodulaSeq(std::vector<std::vector<std::vector<double>>>seq, double factor
 		invpregrapha.resize(factorDepth * (depth + 1));
 		invpregraphs.resize(factorDepth * (depth + 1));
 		for (int z = 0; z < cycles; z++) {
-			for (double it = 1; it < factorDepth; it++) {//potentially undo that...
+			for (double it = 1; it < factorDepth*factorDepth; it++) {//potentially undo that...
 				//std::cout << "\nchecking case for desired value";
 				for (int i = 0; i < graph.size(); i++) {
 					pregrapha[i] += cos(M_PI * i * (1 / it) / factorDepth);
 					pregraphs[i] -= cos(M_PI * i * (1 / it) / factorDepth);
-					invpregrapha[i] += cos(M_PI * i * (it / 1) / factorDepth);
-					invpregraphs[i] -= cos(M_PI * i * (it / 1) / factorDepth);
+					if (inverses) {
+						invpregrapha[i] += cos(M_PI * i * (it / 1) / factorDepth);
+						invpregraphs[i] -= cos(M_PI * i * (it / 1) / factorDepth);
+					}
 				}
 				for (int i = 0; i < graph.size(); i++) {
-					midgrapha[i] = cos((M_PI * i   / factorDepth) * pregrapha[i]);
-					midgraphs[i] = cos((M_PI * i   / factorDepth) * pregraphs[i]);
-					invmidgrapha[i] = cos((M_PI * i   / factorDepth) * invpregrapha[i]);
-					invmidgraphs[i] = cos((M_PI * i   / factorDepth) * invpregraphs[i]);
+					midgrapha[i] = cos((M_PI * i / factorDepth) * pregrapha[i]);
+					midgraphs[i] = cos((M_PI * i / factorDepth) * pregraphs[i]);
+					if (inverses) {
+						invmidgrapha[i] = cos((M_PI * i / factorDepth) * invpregrapha[i]);
+						invmidgraphs[i] = cos((M_PI * i / factorDepth) * invpregraphs[i]);
+					}
 
 				}
 				switch (checkCloser(midgrapha, midgraphs, invmidgrapha, invmidgraphs, graph, sequence, factorDepth)) {
@@ -567,8 +596,9 @@ void fmmodulaSeq(std::vector<std::vector<std::vector<double>>>seq, double factor
 						invpregraphs[i] += cos((M_PI * i * (((factorDepth / (it * factorDepth))) / factorDepth)));
 						graph[i] = cos((M_PI * i / factorDepth) * pregrapha[i]);
 					}
-					frequencies[ik].push_back((factorDepth / (it * factorDepth)));
-					break;
+					if (findInList(frequencies[ik], (factorDepth / (it * factorDepth))) == false) {
+						frequencies[ik].push_back((factorDepth / (it * factorDepth)));
+					}
 				case 1:
 					//std::cout << "\nsubtracting to graph";
 					for (int i = 0; i < graph.size(); i++) {
@@ -579,32 +609,42 @@ void fmmodulaSeq(std::vector<std::vector<std::vector<double>>>seq, double factor
 						invpregraphs[i] -= cos((M_PI * i * (((factorDepth / (it * factorDepth))) / factorDepth)));
 						graph[i] = cos((M_PI * i / factorDepth) * pregraphs[i]);
 					}
-					frequencies[ik].push_back(-(factorDepth / (it * factorDepth)));
-					break;
+					if (findInList(frequencies[ik], -(factorDepth / (it * factorDepth))) == false) {
+						frequencies[ik].push_back(-(factorDepth / (it * factorDepth)));
+					}
 				case 2:
 					//std::cout << "\nadding to graph";
 						//std::cout << ((it * factorDepth) / ((factorDepth))) << ", ";
-					for (int i = 0; i < graph.size(); i++) {
-						pregrapha[i] -= cos((M_PI * i * (factorDepth / (it * factorDepth))) / factorDepth);
-						pregraphs[i] += cos((M_PI * i * (((factorDepth / (it * factorDepth))) / factorDepth)));
-						invpregraphs[i] += 2 * cos((M_PI * i * ((it * factorDepth) / ((factorDepth))) / factorDepth));
-						pregrapha[i] += cos((M_PI * i * ((it * factorDepth) / ((factorDepth))) / factorDepth));
-						pregraphs[i] += cos((M_PI * i * ((it * factorDepth) / ((factorDepth))) / factorDepth));
-						graph[i] = cos((M_PI * i / factorDepth) * invpregrapha[i]);
+					if (inverses) {
+						for (int i = 0; i < graph.size(); i++) {
+							pregrapha[i] -= cos((M_PI * i * (factorDepth / (it * factorDepth))) / factorDepth);
+							pregraphs[i] += cos((M_PI * i * (((factorDepth / (it * factorDepth))) / factorDepth)));
+							invpregraphs[i] += 2 * cos((M_PI * i * ((it * factorDepth) / ((factorDepth))) / factorDepth));
+							pregrapha[i] += cos((M_PI * i * ((it * factorDepth) / ((factorDepth))) / factorDepth));
+							pregraphs[i] += cos((M_PI * i * ((it * factorDepth) / ((factorDepth))) / factorDepth));
+							graph[i] = cos((M_PI * i / factorDepth) * invpregrapha[i]);
+						}
+						if (findInList(frequencies[ik], (it * factorDepth / (factorDepth))) == false) {
+							frequencies[ik].push_back((it * factorDepth / (factorDepth)));
+						}
+						
 					}
-					frequencies[ik].push_back(((it * factorDepth) / ((factorDepth))));
 					break;
 				case 3:
 					//std::cout << -((it * factorDepth) / ((factorDepth))) << ", ";
-					for (int i = 0; i < graph.size(); i++) {
-						pregrapha[i] -= cos((M_PI * i * (factorDepth / (it * factorDepth))) / factorDepth);
-						pregraphs[i] += cos((M_PI * i * (((factorDepth / (it * factorDepth))) / factorDepth)));
-						invpregrapha[i] -= 2 * cos((M_PI * i * ((it * factorDepth) / ((factorDepth))) / factorDepth));
-						pregrapha[i] -= cos((M_PI * i * ((it * factorDepth) / ((factorDepth))) / factorDepth));
-						pregraphs[i] -= cos((M_PI * i * ((it * factorDepth) / ((factorDepth))) / factorDepth));
-						graph[i] = cos((M_PI * i / factorDepth) * invpregraphs[i]);
+					if (inverses) {
+						for (int i = 0; i < graph.size(); i++) {
+							pregrapha[i] -= cos((M_PI * i * (factorDepth / (it * factorDepth))) / factorDepth);
+							pregraphs[i] += cos((M_PI * i * (((factorDepth / (it * factorDepth))) / factorDepth)));
+							invpregrapha[i] -= 2 * cos((M_PI * i * ((it * factorDepth) / ((factorDepth))) / factorDepth));
+							pregrapha[i] -= cos((M_PI * i * ((it * factorDepth) / ((factorDepth))) / factorDepth));
+							pregraphs[i] -= cos((M_PI * i * ((it * factorDepth) / ((factorDepth))) / factorDepth));
+							graph[i] = cos((M_PI * i / factorDepth) * invpregraphs[i]);
+						}
+						if (findInList(frequencies[ik], -(it * factorDepth / (factorDepth))) == false) {
+							frequencies[ik].push_back(-(it * factorDepth / (factorDepth)));
+						}
 					}
-					frequencies[ik].push_back(-((it * factorDepth) / ((factorDepth))));
 					break;
 
 				case 4:
@@ -646,20 +686,20 @@ int powcheckCloser(std::vector<double>pregraph, std::vector<double>graph, std::v
 	nearingAnswerVector[0].resize(0);
 	nearingAnswerVector[1].resize(0);
 	for (int im = 0; im < sequence.size(); im++) {
-		if (abs(graph.at(im*factorDepth) - (sequence[im])) < abs(pregraph.at(im * factorDepth) - (sequence[im]))) {//oh, so maybe pregraph at sequence im -1?
-			for (int i = 0; i < factorDepth*2; i++) {
+		if (abs(graph.at(im * factorDepth) - (sequence[im])) < abs(pregraph.at(im * factorDepth) - (sequence[im]))) {//oh, so maybe pregraph at sequence im -1?
+			for (int i = 0; i < factorDepth * 2; i++) {
 				nearingAnswerVector[1].push_back(true);
 			}
 		}
-		if (abs(graph.at(im * factorDepth) - (sequence[im]))>= abs(pregraph.at(im * factorDepth) - (sequence[im]))) {
-			for (int i = 0; i < factorDepth*2; i++) {
+		if (abs(graph.at(im * factorDepth) - (sequence[im])) >= abs(pregraph.at(im * factorDepth) - (sequence[im]))) {
+			for (int i = 0; i < factorDepth * 2; i++) {
 				nearingAnswerVector[0].push_back(true);
 			}
 		}
 	}
 
 	for (int iz = 0; iz < graph.size() && iz < pregraph.size(); iz++) {
-		if (round(iz / factorDepth) < sequence.size()-1) {
+		if (round(iz / factorDepth) < sequence.size() - 1) {
 			if (abs(pregraph[iz] - sequence[round(iz / factorDepth)]) < abs(graph[iz] - sequence[round(iz / factorDepth)])) {
 				nearingAnswerVector[0].push_back(true);
 			}
@@ -694,10 +734,10 @@ void curveSeq(std::vector<std::vector<std::vector<double>>>seq, double factorDep
 	factors.resize(0);
 	factors.resize(6);
 
-	std::cout << "\n Searching for combinations of curve power factors to fit sequence, scanning range " << cycles << " times for patterning. \n"<<
+	std::cout << "\n Searching for combinations of curve power factors to fit sequence, scanning range " << cycles << " times for patterning. \n" <<
 		"Key: 1->roots 2->quotient 3->difference 4->addend 5->product 6->power";
 	for (int ie = 0; ie < 6; ie++) {
-		std::cout << "\n " << ie+1 << "Set processing powers...\n";
+		std::cout << "\n " << ie + 1 << "Set processing powers...\n";
 		sequence.resize(0);
 		depth = seq[ie][seq[ie].size() - 1].size();
 		for (int it = 0; it < seq[ie].size(); it++) {
@@ -725,9 +765,9 @@ void curveSeq(std::vector<std::vector<std::vector<double>>>seq, double factorDep
 		}
 		factors[ie].push_back(1);
 		//std::cout << "1, ";
-		for(int z=0; z<cycles;z++){
+		for (int z = 0; z < cycles; z++) {
 
-			for (double it = 0.5; it < factorDepth * factorDepth; it += 0.5) {
+			for (double it = 1.0/factorDepth; it < factorDepth*2; it += 1.0/factorDepth) {
 				for (int i = 0; i < graph.size(); i++) {
 
 					pregrapha[i] += pow(i / factorDepth, (it / (factorDepth)));
@@ -735,29 +775,33 @@ void curveSeq(std::vector<std::vector<std::vector<double>>>seq, double factorDep
 				}
 				switch (powcheckCloser(pregrapha, pregraphs, sequence, factorDepth)) {
 				case 0:
-				if (powcheckCloser(pregrapha, graph, sequence, factorDepth) == true) {
+					if (powcheckCloser(pregrapha, graph, sequence, factorDepth) == true ) {
 						for (int i = 0; i < graph.size(); i++) {
 							pregraphs[i] += 2 * pow(i / factorDepth, (it / (factorDepth)));
 							graph[i] += pow(i / factorDepth, (it / (factorDepth)));
 						}
-						factors[ie].push_back((it / (factorDepth)));
+						if (findInList(factors[ie], (it / (factorDepth))) == false) {
+							factors[ie].push_back((it / (factorDepth)));
+						}
 						//std::cout << factors[ie][factors[ie].size() - 1] << ", ";
 					}
 					else {
 						for (int i = 0; i < graph.size(); i++) {
-							pregraphs[i] += pow(i / factorDepth, (it / (factorDepth )));
-							pregrapha[i] -= pow(i / factorDepth, (it / (factorDepth )));
+							pregraphs[i] += pow(i / factorDepth, (it / (factorDepth)));
+							pregrapha[i] -= pow(i / factorDepth, (it / (factorDepth)));
 						}
 
 					}
 					break;
 				case 1:
-					if (powcheckCloser(pregraphs, graph, sequence, factorDepth) == true) {
+					if (powcheckCloser(pregraphs, graph, sequence, factorDepth) == true ) {
 						for (int i = 0; i < graph.size(); i++) {
 							pregrapha[i] -= 2 * pow(i / factorDepth, (it / (factorDepth)));
 							graph[i] -= pow(i / factorDepth, (it / (factorDepth)));
 						}
-						factors[ie].push_back(-(it / (factorDepth)));
+						if (findInList(factors[ie], (-(it / (factorDepth)))) == false){
+							factors[ie].push_back(-(it / (factorDepth)));
+						}
 						//std::cout << factors[ie][factors[ie].size() - 1] << ", ";
 					}
 					else {
@@ -796,6 +840,7 @@ int main()
 	double depth;
 	double factorizationDepth;
 	bool done = false;
+	
 
 
 	while (!done) {
@@ -806,28 +851,30 @@ int main()
 		std::cin >> depth;
 		std::cout << "\n Processing depth: " << depth << ".";
 		std::cout << "\n And, for after the sequences are loaded:" <<
-			"\n Factorization hunt depth (number of factors to consider before rerouting (suggest minimum " << depth << ")) : ";
+			"\n Factorization hunt depth (number of factors to consider before rerouting (suggest minimum " << round(depth/2.0) << ")) : ";
 		std::cin >> factorizationDepth;
-		std::cout<<"\n Cycle length: (suggested minimum " << round(pow(depth,.5)) << ")) : ";
+		std::cout << "\n Cycle length: (suggested minimum " << round(pow(depth, .5)) << ")) : ";
 		std::cin >> cycles;
+		std::cout << "\n Include inverse numbers in search? (0/1): ";
+		std::cin >> inverses;
 		std::cout << "\n Generating sequences depth " << depth;
+
 		calcSeq(depth);
 
-
-		std::cout << "\n \n OK......  Cosine Frequency Modulations Solutions Solver run. \n";
-		fmmodulaSeq(uniqueValues, factorizationDepth);
 
 		std::cout << "\n \n OK......  Cosine Frequencies Solutions Solver run. \n";
 		modulaSeq(uniqueValues, factorizationDepth);
 
-		std::cout << "\n \n OK......  X-Y Direct Curve Solutions Solver run. \n";
+		std::cout << "\n \n OK......  Cosine Frequency Modulations Solutions Solver run. \n";
+		fmmodulaSeq(uniqueValues, factorizationDepth);
+
+		std::cout << "\n \n OK......  X-Y Direct Curve Solutions Solver run. (deprecated). \n";
 		curveSeq(uniqueValues, factorizationDepth);
-		
 
 		std::cout << "\n done?(0/1): ";
 		std::cin >> done;
-		std::cout << "\nDon't forget to save the results! (enter 1 to exit successfully):";
 	}
+	std::cout << "\nDon't forget to save the results! (enter 1 to exit successfully):\n\n";
 	std::cin >> done;
 	return !done;
 }
